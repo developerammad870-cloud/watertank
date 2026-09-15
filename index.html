@@ -333,6 +333,7 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stro
 /* 3D tanker showcase */
 .showcase{background:radial-gradient(ellipse at 50% 75%, var(--petrol-2), var(--petrol) 65%);color:var(--on-petrol)}
 .showcase .eyebrow{color:var(--brass-hi)}
+.showcase + .showcase{border-top:1px solid var(--line-petrol)}
 .showcase .sec-head{margin-block-end:28px}
 .showcase .sec-head h2{color:var(--on-petrol)}
 .showcase .sec-head p{color:var(--on-petrol-2)}
@@ -555,9 +556,9 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stro
       </a>
       <nav class="nav" aria-label="Main">
         <a href="#services"><span class="en">Services</span><span class="ar">الخدمات</span></a>
+        <a href="#work"><span class="en">Gallery</span><span class="ar">المعرض</span></a>
         <a href="#fleet"><span class="en">Tankers</span><span class="ar">الصهاريج</span></a>
         <a href="#process"><span class="en">How it works</span><span class="ar">طريقة العمل</span></a>
-        <a href="#work"><span class="en">Gallery</span><span class="ar">المعرض</span></a>
         <a href="#clients"><span class="en">Clients</span><span class="ar">عملاؤنا</span></a>
         <a href="#faq"><span class="en">FAQ</span><span class="ar">الأسئلة</span></a>
         <a href="#contact"><span class="en">Contact</span><span class="ar">تواصل معنا</span></a>
@@ -779,146 +780,6 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stro
       </div>
     </section>
 
-    <section class="sec showcase" id="truck-3d">
-      <div class="wrap">
-        <div class="sec-head">
-          <p class="eyebrow"><span class="en">Our tanker in 3D</span><span class="ar">صهريجنا بالأبعاد الثلاثية</span></p>
-          <h2><span class="en">Turn the truck and look around</span><span class="ar">حرّك الصهريج وشاهده من كل الجهات</span></h2>
-          <p><span class="en">The same yellow tanker that comes to your door. Drag it, or pick a view below.</span><span class="ar">نفس الصهريج الأصفر الذي يصل إلى بابك. اسحبه أو اختر زاوية من الأسفل.</span></p>
-        </div>
-        <div class="stage3d" id="stage3d" tabindex="0" aria-label="3D model of the yellow suction tanker. Drag or use the arrow keys to turn it.">
-          <p class="hint"><span class="en">Drag to turn</span><span class="ar">اسحب للتدوير</span></p>
-        </div>
-        <div class="views" id="views3d">
-          <button type="button" id="view-side" data-view="side" aria-pressed="false"><span class="en">Side</span><span class="ar">الجانب</span></button>
-          <button type="button" id="view-three" data-view="three" aria-pressed="false"><span class="en">3/4 view</span><span class="ar">زاوية أمامية</span></button>
-          <button type="button" id="view-front" data-view="front" aria-pressed="false"><span class="en">Front</span><span class="ar">الأمام</span></button>
-          <button type="button" id="view-rear" data-view="rear" aria-pressed="false"><span class="en">Rear</span><span class="ar">الخلف</span></button>
-        </div>
-      </div>
-    </section>
-
-    <section class="sec" id="features">
-      <div class="wrap">
-        <div class="sec-head">
-          <p class="eyebrow"><span class="en">Tanker features</span><span class="ar">مواصفات الصهريج</span></p>
-          <h2><span class="en">What's on our tanker</span><span class="ar">ماذا يوجد في صهريجنا</span></h2>
-          <p><span class="en">Every part has a job. Tap a feature to find it on the truck.</span><span class="ar">لكل جزء مهمة. اضغط على الميزة لتجدها على الصهريج.</span></p>
-        </div>
-        <div class="feat">
-          <div class="feat-art">
-            <svg viewBox="0 0 660 360" role="img" aria-label="Our yellow suction tanker with six numbered features">
-              <use href="#tanker-side" x="0" y="10" width="660" height="340"/>
-              <ellipse cx="40" cy="311" rx="30" ry="6" fill="#0A1A1F" stroke="#5C6A6B" stroke-width="2"/>
-              <path d="M84 212C56 218 40 244 48 270c5 18-6 32-8 40" fill="none" stroke="#F4F7F6" stroke-width="10" stroke-linecap="round"/>
-              <path d="M84 212C56 218 40 244 48 270c5 18-6 32-8 40" fill="none" stroke="#B7C3C3" stroke-width="10" stroke-dasharray="1.5 3.5"/>
-              <g class="mk" data-f="1" transform="translate(408 206)"><circle class="ring" r="13"/><circle r="13"/><text>1</text></g>
-              <g class="mk" data-f="2" transform="translate(448 212)"><circle class="ring" r="13"/><circle r="13"/><text>2</text></g>
-              <g class="mk" data-f="3" transform="translate(50 262)"><circle class="ring" r="13"/><circle r="13"/><text>3</text></g>
-              <g class="mk" data-f="4" transform="translate(127 150)"><circle class="ring" r="13"/><circle r="13"/><text>4</text></g>
-              <g class="mk" data-f="5" transform="translate(218 76)"><circle class="ring" r="13"/><circle r="13"/><text>5</text></g>
-              <g class="mk" data-f="6" transform="translate(530 74)"><circle class="ring" r="13"/><circle r="13"/><text>6</text></g>
-            </svg>
-          </div>
-          <ol class="feat-list">
-            <li data-f="1"><span class="n">1</span><div>
-              <h3><span class="en">Up to 12,000-gallon tank</span><span class="ar">خزان حتى 12,000 جالون</span></h3>
-              <p><span class="en">About 54,550 litres, so big buildings and compounds are emptied in one trip.</span><span class="ar">حوالي 54,550 لتر، لتفريغ المباني الكبيرة والمجمعات في رحلة واحدة.</span></p>
-            </div></li>
-            <li data-f="2"><span class="n">2</span><div>
-              <h3><span class="en">Powerful vacuum pump</span><span class="ar">مضخة شفط قوية</span></h3>
-              <p><span class="en">Pulls sewage, sludge and standing water out fast, even from deep pits.</span><span class="ar">تسحب مياه المجاري والرواسب والمياه الراكدة بسرعة حتى من الحفر العميقة.</span></p>
-            </div></li>
-            <li data-f="3"><span class="n">3</span><div>
-              <h3><span class="en">4″ sealed suction hose</span><span class="ar">خرطوم شفط محكم 4 إنش</span></h3>
-              <p><span class="en">Tight couplings keep smell and spills off your property.</span><span class="ar">وصلات محكمة تمنع الروائح والتسرب في موقعك.</span></p>
-            </div></li>
-            <li data-f="4"><span class="n">4</span><div>
-              <h3><span class="en">Level gauge</span><span class="ar">مؤشر المستوى</span></h3>
-              <p><span class="en">The crew can see how full the tank is, so it never overfills.</span><span class="ar">يرى الفريق مستوى امتلاء الخزان فلا يحدث فيضان.</span></p>
-            </div></li>
-            <li data-f="5"><span class="n">5</span><div>
-              <h3><span class="en">Sealed top hatches</span><span class="ar">فتحات علوية محكمة</span></h3>
-              <p><span class="en">Closed lids for inspection and cleaning, and no open tank on the road.</span><span class="ar">أغطية مغلقة للفحص والتنظيف، دون خزان مكشوف على الطريق.</span></p>
-            </div></li>
-            <li data-f="6"><span class="n">6</span><div>
-              <h3><span class="en">Beacon and safety chevrons</span><span class="ar">إضاءة تحذيرية وشارات أمان</span></h3>
-              <p><span class="en">Easy to see at night and on busy roads while we work.</span><span class="ar">واضحة ليلاً وعلى الطرق المزدحمة أثناء العمل.</span></p>
-            </div></li>
-          </ol>
-        </div>
-      </div>
-    </section>
-
-    <section class="sec fleet-bg" id="fleet">
-      <div class="wrap">
-        <div class="sec-head">
-          <p class="eyebrow"><span class="en">Our tankers</span><span class="ar">صهاريجنا</span></p>
-          <h2><span class="en">Choose the right tanker size</span><span class="ar">اختر حجم الصهريج المناسب</span></h2>
-          <p><span class="en">Three sizes. Tell us your tank and we'll send the one that fits — you never pay for a bigger truck than the job needs.</span><span class="ar">ثلاثة أحجام. أخبرنا عن خزانك وسنرسل الصهريج المناسب — دون أن تدفع ثمن صهريج أكبر من حاجتك.</span></p>
-        </div>
-
-        <div class="fleet" role="table" aria-label="Tanker sizes">
-          <div class="fleet-row th" role="row">
-            <span role="columnheader"><span class="en">Tanker</span><span class="ar">الصهريج</span></span>
-            <span role="columnheader"><span class="en">Capacity, to scale</span><span class="ar">السعة بالمقياس</span></span>
-            <span role="columnheader"><span class="en">Litres</span><span class="ar">باللتر</span></span>
-            <span role="columnheader" class="best"><span class="en">Best for</span><span class="ar">مناسب لـ</span></span>
-          </div>
-          <div class="fleet-row" role="row">
-            <div class="gal ltr" role="cell">5,000<small>gallons</small></div>
-            <div class="bar" role="cell" aria-label="42% of largest tanker"><i style="width:41.7%"></i></div>
-            <div class="litre ltr" role="cell">≈ 22,730 L</div>
-            <div class="best" role="cell"><span class="en">Villas, houses and small septic tanks</span><span class="ar">الفلل والمنازل والبيارات الصغيرة</span></div>
-          </div>
-          <div class="fleet-row" role="row">
-            <div class="gal ltr" role="cell">8,000<small>gallons</small></div>
-            <div class="bar" role="cell" aria-label="67% of largest tanker"><i style="width:66.7%"></i></div>
-            <div class="litre ltr" role="cell">≈ 36,370 L</div>
-            <div class="best" role="cell"><span class="en">Apartment buildings, restaurants, schools</span><span class="ar">العمارات السكنية والمطاعم والمدارس</span></div>
-          </div>
-          <div class="fleet-row" role="row">
-            <div class="gal ltr" role="cell">12,000<small>gallons</small></div>
-            <div class="bar" role="cell" aria-label="100% — largest tanker"><i style="width:100%"></i></div>
-            <div class="litre ltr" role="cell">≈ 54,550 L</div>
-            <div class="best" role="cell"><span class="en">Hotels, compounds, factories, construction sites</span><span class="ar">الفنادق والمجمعات والمصانع ومواقع البناء</span></div>
-          </div>
-        </div>
-        <p class="fleet-note"><span class="en">Capacities in imperial gallons (1 gal = 4.546 L).</span><span class="ar">السعات بالجالون الإمبراطوري (1 جالون = 4.546 لتر).</span></p>
-      </div>
-    </section>
-
-    <section class="sec" id="process">
-      <div class="wrap">
-        <div class="sec-head">
-          <p class="eyebrow"><span class="en">How it works</span><span class="ar">طريقة العمل</span></p>
-          <h2><span class="en">From your call to a clean site</span><span class="ar">من اتصالك حتى موقع نظيف</span></h2>
-        </div>
-        <ol class="steps">
-          <li>
-            <span class="num">1</span>
-            <h3><span class="en">Call or WhatsApp</span><span class="ar">اتصل أو راسلنا</span></h3>
-            <p><span class="en">Tell us your area, the tank type, and when it was last emptied.</span><span class="ar">أخبرنا بالمنطقة ونوع الخزان وآخر مرة تم تفريغه.</span></p>
-          </li>
-          <li>
-            <span class="num">2</span>
-            <h3><span class="en">Price &amp; time confirmed</span><span class="ar">تأكيد السعر والموعد</span></h3>
-            <p><span class="en">You get a fixed price and an arrival time before the tanker leaves.</span><span class="ar">نؤكد لك السعر والموعد قبل انطلاق الصهريج.</span></p>
-          </li>
-          <li>
-            <span class="num">3</span>
-            <h3><span class="en">Suction on site</span><span class="ar">الشفط في الموقع</span></h3>
-            <p><span class="en">The crew lays the hose, pumps the tank dry and lifts out bottom sludge.</span><span class="ar">يمدّ الفريق الخرطوم ويفرّغ الخزان بالكامل مع إزالة رواسب القاع.</span></p>
-          </li>
-          <li>
-            <span class="num">4</span>
-            <h3><span class="en">Rinsed &amp; disposed</span><span class="ar">غسل الموقع والتخلص الآمن</span></h3>
-            <p><span class="en">The area is washed down and the load goes to a licensed treatment plant.</span><span class="ar">نغسل المكان وننقل الحمولة إلى محطة معالجة مرخّصة.</span></p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
     <section class="sec showcase" id="work">
       <div class="wrap">
         <div class="sec-head">
@@ -1077,6 +938,146 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stro
           </figure>
         </div>
         </div><!-- /work -->
+      </div>
+    </section>
+
+    <section class="sec showcase" id="truck-3d">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="eyebrow"><span class="en">Our tanker in 3D</span><span class="ar">صهريجنا بالأبعاد الثلاثية</span></p>
+          <h2><span class="en">Turn the truck and look around</span><span class="ar">حرّك الصهريج وشاهده من كل الجهات</span></h2>
+          <p><span class="en">The same yellow tanker that comes to your door. Drag it, or pick a view below.</span><span class="ar">نفس الصهريج الأصفر الذي يصل إلى بابك. اسحبه أو اختر زاوية من الأسفل.</span></p>
+        </div>
+        <div class="stage3d" id="stage3d" tabindex="0" aria-label="3D model of the yellow suction tanker. Drag or use the arrow keys to turn it.">
+          <p class="hint"><span class="en">Drag to turn</span><span class="ar">اسحب للتدوير</span></p>
+        </div>
+        <div class="views" id="views3d">
+          <button type="button" id="view-side" data-view="side" aria-pressed="false"><span class="en">Side</span><span class="ar">الجانب</span></button>
+          <button type="button" id="view-three" data-view="three" aria-pressed="false"><span class="en">3/4 view</span><span class="ar">زاوية أمامية</span></button>
+          <button type="button" id="view-front" data-view="front" aria-pressed="false"><span class="en">Front</span><span class="ar">الأمام</span></button>
+          <button type="button" id="view-rear" data-view="rear" aria-pressed="false"><span class="en">Rear</span><span class="ar">الخلف</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="features">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="eyebrow"><span class="en">Tanker features</span><span class="ar">مواصفات الصهريج</span></p>
+          <h2><span class="en">What's on our tanker</span><span class="ar">ماذا يوجد في صهريجنا</span></h2>
+          <p><span class="en">Every part has a job. Tap a feature to find it on the truck.</span><span class="ar">لكل جزء مهمة. اضغط على الميزة لتجدها على الصهريج.</span></p>
+        </div>
+        <div class="feat">
+          <div class="feat-art">
+            <svg viewBox="0 0 660 360" role="img" aria-label="Our yellow suction tanker with six numbered features">
+              <use href="#tanker-side" x="0" y="10" width="660" height="340"/>
+              <ellipse cx="40" cy="311" rx="30" ry="6" fill="#0A1A1F" stroke="#5C6A6B" stroke-width="2"/>
+              <path d="M84 212C56 218 40 244 48 270c5 18-6 32-8 40" fill="none" stroke="#F4F7F6" stroke-width="10" stroke-linecap="round"/>
+              <path d="M84 212C56 218 40 244 48 270c5 18-6 32-8 40" fill="none" stroke="#B7C3C3" stroke-width="10" stroke-dasharray="1.5 3.5"/>
+              <g class="mk" data-f="1" transform="translate(408 206)"><circle class="ring" r="13"/><circle r="13"/><text>1</text></g>
+              <g class="mk" data-f="2" transform="translate(448 212)"><circle class="ring" r="13"/><circle r="13"/><text>2</text></g>
+              <g class="mk" data-f="3" transform="translate(50 262)"><circle class="ring" r="13"/><circle r="13"/><text>3</text></g>
+              <g class="mk" data-f="4" transform="translate(127 150)"><circle class="ring" r="13"/><circle r="13"/><text>4</text></g>
+              <g class="mk" data-f="5" transform="translate(218 76)"><circle class="ring" r="13"/><circle r="13"/><text>5</text></g>
+              <g class="mk" data-f="6" transform="translate(530 74)"><circle class="ring" r="13"/><circle r="13"/><text>6</text></g>
+            </svg>
+          </div>
+          <ol class="feat-list">
+            <li data-f="1"><span class="n">1</span><div>
+              <h3><span class="en">Up to 12,000-gallon tank</span><span class="ar">خزان حتى 12,000 جالون</span></h3>
+              <p><span class="en">About 54,550 litres, so big buildings and compounds are emptied in one trip.</span><span class="ar">حوالي 54,550 لتر، لتفريغ المباني الكبيرة والمجمعات في رحلة واحدة.</span></p>
+            </div></li>
+            <li data-f="2"><span class="n">2</span><div>
+              <h3><span class="en">Powerful vacuum pump</span><span class="ar">مضخة شفط قوية</span></h3>
+              <p><span class="en">Pulls sewage, sludge and standing water out fast, even from deep pits.</span><span class="ar">تسحب مياه المجاري والرواسب والمياه الراكدة بسرعة حتى من الحفر العميقة.</span></p>
+            </div></li>
+            <li data-f="3"><span class="n">3</span><div>
+              <h3><span class="en">4″ sealed suction hose</span><span class="ar">خرطوم شفط محكم 4 إنش</span></h3>
+              <p><span class="en">Tight couplings keep smell and spills off your property.</span><span class="ar">وصلات محكمة تمنع الروائح والتسرب في موقعك.</span></p>
+            </div></li>
+            <li data-f="4"><span class="n">4</span><div>
+              <h3><span class="en">Level gauge</span><span class="ar">مؤشر المستوى</span></h3>
+              <p><span class="en">The crew can see how full the tank is, so it never overfills.</span><span class="ar">يرى الفريق مستوى امتلاء الخزان فلا يحدث فيضان.</span></p>
+            </div></li>
+            <li data-f="5"><span class="n">5</span><div>
+              <h3><span class="en">Sealed top hatches</span><span class="ar">فتحات علوية محكمة</span></h3>
+              <p><span class="en">Closed lids for inspection and cleaning, and no open tank on the road.</span><span class="ar">أغطية مغلقة للفحص والتنظيف، دون خزان مكشوف على الطريق.</span></p>
+            </div></li>
+            <li data-f="6"><span class="n">6</span><div>
+              <h3><span class="en">Beacon and safety chevrons</span><span class="ar">إضاءة تحذيرية وشارات أمان</span></h3>
+              <p><span class="en">Easy to see at night and on busy roads while we work.</span><span class="ar">واضحة ليلاً وعلى الطرق المزدحمة أثناء العمل.</span></p>
+            </div></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec fleet-bg" id="fleet">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="eyebrow"><span class="en">Our tankers</span><span class="ar">صهاريجنا</span></p>
+          <h2><span class="en">Choose the right tanker size</span><span class="ar">اختر حجم الصهريج المناسب</span></h2>
+          <p><span class="en">Three sizes. Tell us your tank and we'll send the one that fits — you never pay for a bigger truck than the job needs.</span><span class="ar">ثلاثة أحجام. أخبرنا عن خزانك وسنرسل الصهريج المناسب — دون أن تدفع ثمن صهريج أكبر من حاجتك.</span></p>
+        </div>
+
+        <div class="fleet" role="table" aria-label="Tanker sizes">
+          <div class="fleet-row th" role="row">
+            <span role="columnheader"><span class="en">Tanker</span><span class="ar">الصهريج</span></span>
+            <span role="columnheader"><span class="en">Capacity, to scale</span><span class="ar">السعة بالمقياس</span></span>
+            <span role="columnheader"><span class="en">Litres</span><span class="ar">باللتر</span></span>
+            <span role="columnheader" class="best"><span class="en">Best for</span><span class="ar">مناسب لـ</span></span>
+          </div>
+          <div class="fleet-row" role="row">
+            <div class="gal ltr" role="cell">5,000<small>gallons</small></div>
+            <div class="bar" role="cell" aria-label="42% of largest tanker"><i style="width:41.7%"></i></div>
+            <div class="litre ltr" role="cell">≈ 22,730 L</div>
+            <div class="best" role="cell"><span class="en">Villas, houses and small septic tanks</span><span class="ar">الفلل والمنازل والبيارات الصغيرة</span></div>
+          </div>
+          <div class="fleet-row" role="row">
+            <div class="gal ltr" role="cell">8,000<small>gallons</small></div>
+            <div class="bar" role="cell" aria-label="67% of largest tanker"><i style="width:66.7%"></i></div>
+            <div class="litre ltr" role="cell">≈ 36,370 L</div>
+            <div class="best" role="cell"><span class="en">Apartment buildings, restaurants, schools</span><span class="ar">العمارات السكنية والمطاعم والمدارس</span></div>
+          </div>
+          <div class="fleet-row" role="row">
+            <div class="gal ltr" role="cell">12,000<small>gallons</small></div>
+            <div class="bar" role="cell" aria-label="100% — largest tanker"><i style="width:100%"></i></div>
+            <div class="litre ltr" role="cell">≈ 54,550 L</div>
+            <div class="best" role="cell"><span class="en">Hotels, compounds, factories, construction sites</span><span class="ar">الفنادق والمجمعات والمصانع ومواقع البناء</span></div>
+          </div>
+        </div>
+        <p class="fleet-note"><span class="en">Capacities in imperial gallons (1 gal = 4.546 L).</span><span class="ar">السعات بالجالون الإمبراطوري (1 جالون = 4.546 لتر).</span></p>
+      </div>
+    </section>
+
+    <section class="sec" id="process">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="eyebrow"><span class="en">How it works</span><span class="ar">طريقة العمل</span></p>
+          <h2><span class="en">From your call to a clean site</span><span class="ar">من اتصالك حتى موقع نظيف</span></h2>
+        </div>
+        <ol class="steps">
+          <li>
+            <span class="num">1</span>
+            <h3><span class="en">Call or WhatsApp</span><span class="ar">اتصل أو راسلنا</span></h3>
+            <p><span class="en">Tell us your area, the tank type, and when it was last emptied.</span><span class="ar">أخبرنا بالمنطقة ونوع الخزان وآخر مرة تم تفريغه.</span></p>
+          </li>
+          <li>
+            <span class="num">2</span>
+            <h3><span class="en">Price &amp; time confirmed</span><span class="ar">تأكيد السعر والموعد</span></h3>
+            <p><span class="en">You get a fixed price and an arrival time before the tanker leaves.</span><span class="ar">نؤكد لك السعر والموعد قبل انطلاق الصهريج.</span></p>
+          </li>
+          <li>
+            <span class="num">3</span>
+            <h3><span class="en">Suction on site</span><span class="ar">الشفط في الموقع</span></h3>
+            <p><span class="en">The crew lays the hose, pumps the tank dry and lifts out bottom sludge.</span><span class="ar">يمدّ الفريق الخرطوم ويفرّغ الخزان بالكامل مع إزالة رواسب القاع.</span></p>
+          </li>
+          <li>
+            <span class="num">4</span>
+            <h3><span class="en">Rinsed &amp; disposed</span><span class="ar">غسل الموقع والتخلص الآمن</span></h3>
+            <p><span class="en">The area is washed down and the load goes to a licensed treatment plant.</span><span class="ar">نغسل المكان وننقل الحمولة إلى محطة معالجة مرخّصة.</span></p>
+          </li>
+        </ol>
       </div>
     </section>
 
