@@ -1,0 +1,9 @@
+# Only the website (index.html and videos/) is deployed; server.js is for running it locally.
+server.js
+package.json
+package-lock.json
+README.md
+DEPLOY.md
+AGENTS.md
+CLAUDE.md
+skills-lock.json
