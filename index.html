@@ -22,33 +22,14 @@
 <style>
 /* Palette: fleet yellow (the trucks) on deep navy, with warm white — token names kept from the first palette */
 :root{
-  --ground:#F4F4EF; --surface:#FFFFFF; --field:#F8F8F4;
-  --ink:#14202B; --ink-2:#55606B; --rule:#D8DAD2;
-  --brass:#7F6200; --brass-hi:#F2B705; --on-brass:#1A1400;
-  --petrol:#13212F; --petrol-2:#1D3448; --petrol-3:#0B151E;
-  --on-petrol:#F4F2EA; --on-petrol-2:#AAB5BF; --line-petrol:rgba(244,242,234,.12);
-  --teal:#E0A800;
-  --shadow:0 22px 48px -28px rgba(11,21,30,.5);
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --ground:#0C141B; --surface:#131E28; --field:#0F1922;
-    --ink:#EEEDE6; --ink-2:#A2ACB5; --rule:#253342;
-    --brass:#F2B705; --brass-hi:#F5C22E; --on-brass:#1A1400;
-    --petrol:#111D29; --petrol-2:#1B3148; --petrol-3:#070D13;
-    --on-petrol:#F4F2EA; --on-petrol-2:#A6B1BB; --line-petrol:rgba(244,242,234,.1);
-    --teal:#E8B000;
-    --shadow:0 22px 48px -28px rgba(0,0,0,.8);
-  }
-}
-:root[data-theme="dark"]{
-  --ground:#0C141B; --surface:#131E28; --field:#0F1922;
-  --ink:#EEEDE6; --ink-2:#A2ACB5; --rule:#253342;
-  --brass:#F2B705; --brass-hi:#F5C22E; --on-brass:#1A1400;
-  --petrol:#111D29; --petrol-2:#1B3148; --petrol-3:#070D13;
-  --on-petrol:#F4F2EA; --on-petrol-2:#A6B1BB; --line-petrol:rgba(244,242,234,.1);
-  --teal:#E8B000;
-  --shadow:0 22px 48px -28px rgba(0,0,0,.8);
+  color-scheme:light;
+  --ground:#F7F3EB; --surface:#FFFFFF; --field:#F1EADE;
+  --ink:#0C0F14; --ink-2:#4E545C; --rule:#E0D7C6;
+  --brass:#7A5D10; --brass-hi:#BE9A22; --on-brass:#140F00;
+  --petrol:#F3EFE7; --petrol-2:#FFFFFF; --petrol-3:#EFE8DC;
+  --on-petrol:#16181C; --on-petrol-2:#5C6068; --line-petrol:rgba(22,24,28,.11);
+  --teal:#0E6E5C;
+  --shadow:0 28px 64px -34px rgba(12,15,20,.45);
 }
 
 *,*::before,*::after{box-sizing:border-box}
@@ -89,7 +70,7 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stro
 .btn-brass{background:var(--brass-hi);color:var(--on-brass)}
 .btn-brass:hover{background:var(--on-petrol)}
 .btn-ghost{border-color:var(--line-petrol);color:var(--on-petrol);background:transparent}
-.btn-ghost:hover{border-color:var(--brass-hi);color:var(--brass-hi)}
+.btn-ghost:hover{border-color:var(--brass);color:var(--brass)}
 
 /* Top strip */
 .strip{background:var(--petrol-3);color:var(--on-petrol-2);font-size:14px}
@@ -104,7 +85,7 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stro
 .strip-right{display:flex;align-items:center;gap:16px}
 
 /* Header */
-.head{position:sticky;top:0;z-index:20;background:color-mix(in srgb, var(--ground) 92%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
+.head{position:sticky;top:0;z-index:20;background:color-mix(in srgb, var(--ground) 92%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule);box-shadow:0 1px 0 color-mix(in srgb, var(--brass-hi) 35%, transparent)}
 .head .wrap{display:flex;align-items:center;gap:28px;padding-block:12px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
 .brand svg{width:44px;height:44px;flex:none}
@@ -114,38 +95,42 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stro
 .nav{display:flex;gap:24px;margin-inline-start:auto}
 .nav a{text-decoration:none;font-size:15px;color:var(--ink-2);font-weight:500;padding-block:6px;border-bottom:1px solid transparent}
 .nav a:hover{color:var(--ink);border-bottom-color:var(--brass)}
-.head .call{padding:10px 18px;font-size:15px;background:var(--petrol);color:var(--on-petrol)}
+.head .call{padding:10px 18px;font-size:15px;background:var(--ink);color:var(--ground)}
 .head .call:hover{background:var(--brass-hi);color:var(--on-brass)}
 
 /* Hero */
 .hero{
-  background:
-    linear-gradient(var(--line-petrol) 1px, transparent 1px) 0 0/48px 48px,
-    linear-gradient(90deg, var(--line-petrol) 1px, transparent 1px) 0 0/48px 48px,
-    radial-gradient(ellipse at 75% 40%, var(--petrol-2), var(--petrol) 70%);
+  background:radial-gradient(ellipse at 72% 38%, var(--surface), var(--petrol) 72%);
   color:var(--on-petrol);
-  --line-petrol-grid:0;
 }
 .hero{background-blend-mode:normal}
 .hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center;padding-block:26px 32px}
-.hero .eyebrow{color:var(--brass-hi)}
+.hero .eyebrow{color:var(--brass)}
 .hero h1{margin-block:10px 16px}
-.hero h1 .calli{display:block;font-size:clamp(30px,4.2vw,52px);line-height:1.55;color:var(--brass-hi);white-space:nowrap}
-.hero h1 .name-en{display:block;font-family:"Marcellus",Georgia,serif;font-size:clamp(20px,2.3vw,30px);letter-spacing:.12em;text-transform:uppercase;line-height:1.2;padding-block:10px 0;margin-block-start:6px;position:relative}
+.hero h1 .calli{display:block;font-size:clamp(30px,4.2vw,52px);line-height:1.55;color:var(--brass);white-space:nowrap}
+.hero h1 .name-en{display:block;direction:ltr;unicode-bidi:isolate;font-family:"Marcellus",Georgia,serif;font-size:clamp(20px,2.3vw,30px);letter-spacing:.12em;text-transform:uppercase;line-height:1.2;padding-block:10px 0;margin-block-start:6px;position:relative}
 .hero h1 .name-en::before{content:"";position:absolute;inset-inline:0;top:0;height:1px;background:var(--brass-hi);transform-origin:right;transition:transform 1.2s var(--ease) var(--d,0ms)}
 .lede{color:var(--on-petrol-2);max-width:54ch;font-size:18px}
 .site[data-lang="ar"] .lede{font-size:19px;line-height:1.9}
 .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-block-start:22px}
 
-.tanker{width:100%;height:auto;direction:ltr;display:block}
-.tanker .tk-en{fill:#14202B;font:14px "Marcellus",Georgia,serif;letter-spacing:.14em}
-.tanker .tk-ar{fill:#14202B;font:700 24px "Lemonada","Amiri",serif}
-.tanker .tk-num{fill:#14202B;font:700 19px "Public Sans",sans-serif;letter-spacing:.04em}
-.tanker .tk-door{fill:#14202B;font:700 15px "Public Sans",sans-serif}
-.tanker .level{transform-box:fill-box;transform-origin:50% 100%}
-@media (prefers-reduced-motion: no-preference){
-  .tanker .beacon{animation:beacon 1.6s ease-in-out infinite}
-}
+/* Hero photos of the real tanker: large on the right, bleeding off the edge and fading into the
+   background rather than sitting in a box, with one angle following another */
+.hero-grid{position:relative;min-height:clamp(360px,42vw,520px)}
+.hero-copy{position:relative;z-index:1;max-width:min(100%, 560px, calc(100vw - min(53vw, 840px) - max(40px, (100vw - 1100px) / 2) - 76px))}
+.hero-copy h1 .calli{white-space:nowrap;font-size:clamp(22px,2vw,32px)}
+.tk-photos{position:absolute;top:50%;transform:translateY(-50%);inset-inline-end:calc(50% - 50vw);width:min(53vw,840px);aspect-ratio:1624/969}
+.tk-stage{position:absolute;inset:0;overflow:hidden;
+  -webkit-mask-image:linear-gradient(to right, transparent 0, #000 30%), linear-gradient(to bottom, transparent 0, #000 14%, #000 84%, transparent 100%);
+  -webkit-mask-composite:source-in;
+  mask-image:linear-gradient(to right, transparent 0, #000 30%), linear-gradient(to bottom, transparent 0, #000 14%, #000 84%, transparent 100%);
+  mask-composite:intersect}
+.tk-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;opacity:0;transform:scale(1.06);transition:opacity 1s var(--ease),transform 1.7s var(--ease)}
+.tk-stage img.on{opacity:1;transform:none}
+.tk-dots{position:absolute;inset-inline-end:8px;bottom:6px;z-index:2;display:flex;gap:8px}
+.tk-dots button{width:28px;height:4px;padding:0;border:0;border-radius:2px;background:var(--line-petrol);cursor:pointer;transition:background .2s,transform .2s}
+.tk-dots button:hover{background:var(--on-petrol-2)}
+.tk-dots button[aria-pressed="true"]{background:var(--brass-hi);transform:scaleY(1.7)}
 @keyframes beacon{50%{opacity:.35}}
 
 .plate{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line-petrol)}
@@ -166,7 +151,7 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stro
 .svc{position:relative;background:var(--ground);padding:30px 28px 34px;display:grid;gap:12px;align-content:start;transition:background .25s,transform .4s var(--ease),box-shadow .4s var(--ease)}
 .svc:hover{background:var(--surface);transform:translateY(-6px);box-shadow:var(--shadow);z-index:1}
 .svc .ico{width:48px;height:48px;display:grid;place-items:center;border:1px solid var(--rule);border-radius:50%;color:var(--brass);transition:background .25s,color .25s,border-color .25s,transform .4s var(--ease)}
-.svc:hover .ico{background:var(--petrol);color:var(--brass-hi);border-color:var(--petrol);transform:scale(1.1) rotate(-8deg)}
+.svc:hover .ico{background:var(--ink);color:var(--brass-hi);border-color:var(--petrol);transform:scale(1.1) rotate(-8deg)}
 .svc h3{font-family:var(--f-display);font-size:23px;line-height:1.25}
 .site[data-lang="ar"] .svc h3{font-weight:700}
 .svc p{color:var(--ink-2);font-size:16px}
@@ -180,8 +165,8 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stro
 .gal{font-family:"Marcellus",Georgia,serif;font-size:32px;line-height:1;font-variant-numeric:tabular-nums}
 .gal small{display:block;font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;color:var(--brass);margin-top:6px;text-transform:uppercase}
 .bar{height:18px;background:var(--field);border:1px solid var(--rule);border-radius:10px;overflow:hidden}
-.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--petrol),var(--teal));border-radius:10px;border-inline-end:4px solid var(--brass-hi)}
-.site[data-lang="ar"] .bar i{background:linear-gradient(270deg,var(--petrol),var(--teal))}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--ink),var(--teal));border-radius:10px;border-inline-end:4px solid var(--brass-hi)}
+.site[data-lang="ar"] .bar i{background:linear-gradient(270deg,var(--ink),var(--teal))}
 .litre{font-family:var(--f-mono);font-size:15px;font-variant-numeric:tabular-nums;color:var(--ink)}
 .best{color:var(--ink-2);font-size:16px}
 .fleet-note{margin-top:16px;font-size:14px;color:var(--ink-2)}
@@ -190,7 +175,7 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stro
 .steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;position:relative}
 .steps::before{content:"";position:absolute;inset-inline:26px;top:26px;border-top:2px dashed var(--rule)}
 .steps li{position:relative;display:grid;gap:10px;align-content:start}
-.num{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:var(--petrol);color:var(--brass-hi);font-family:"Marcellus",Georgia,serif;font-size:24px;box-shadow:0 0 0 6px var(--ground);margin-bottom:8px;transition:transform .7s cubic-bezier(.34,1.56,.64,1) calc(var(--d,0ms) + 150ms),background .3s,color .3s}
+.num{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:var(--brass-hi);font-family:"Marcellus",Georgia,serif;font-size:24px;box-shadow:0 0 0 6px var(--ground);margin-bottom:8px;transition:transform .7s cubic-bezier(.34,1.56,.64,1) calc(var(--d,0ms) + 150ms),background .3s,color .3s}
 .steps li:hover .num{background:var(--brass-hi);color:var(--on-brass)}
 .steps h3{font-family:var(--f-display);font-size:22px;line-height:1.25}
 .site[data-lang="ar"] .steps h3{font-weight:700}
@@ -224,20 +209,20 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stro
 
 /* Contact */
 .contact{background:var(--petrol);color:var(--on-petrol)}
-.contact .eyebrow{color:var(--brass-hi)}
+.contact .eyebrow{color:var(--brass)}
 .contact .sec-head h2{color:var(--on-petrol)}
 .contact .sec-head p{color:var(--on-petrol-2)}
 .contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:start}
 .lines{display:grid;gap:0}
 .lines a,.lines div{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:center;padding-block:18px;border-top:1px solid var(--line-petrol);text-decoration:none;color:var(--on-petrol)}
 .lines > :last-child{border-bottom:1px solid var(--line-petrol)}
-.lines .i{width:26px;height:26px;color:var(--brass-hi);transition:transform .3s var(--ease)}
+.lines .i{width:26px;height:26px;color:var(--brass);transition:transform .3s var(--ease)}
 .lines a:hover .i{transform:translateX(4px)}
 [dir="rtl"] .lines a:hover .i{transform:translateX(-4px)}
 .lines small{display:block;color:var(--on-petrol-2);font-size:14px}
 .lines strong{font-weight:500;font-size:18px}
-.lines .big{font-family:"Marcellus",Georgia,serif;font-size:clamp(28px,3.4vw,38px);font-weight:400;letter-spacing:.03em;color:var(--brass-hi)}
-.lines a:hover strong{color:var(--brass-hi)}
+.lines .big{font-family:"Marcellus",Georgia,serif;font-size:clamp(28px,3.4vw,38px);font-weight:400;letter-spacing:.03em;color:var(--brass)}
+.lines a:hover strong{color:var(--brass)}
 
 .form{background:var(--surface);color:var(--ink);padding:34px;border-radius:4px;box-shadow:var(--shadow);display:grid;gap:18px;grid-template-columns:1fr 1fr;border-top:4px solid var(--brass-hi)}
 .form h3{grid-column:1/-1;font-family:var(--f-display);font-size:26px}
@@ -248,7 +233,7 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stro
 .field input,.field select,.field textarea{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--field);border:1px solid var(--rule);border-radius:3px;padding:11px 13px}
 .field textarea{min-height:88px;resize:vertical}
 .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--brass);box-shadow:0 0 0 3px color-mix(in srgb, var(--brass-hi) 30%, transparent)}
-.form .btn{grid-column:1/-1;justify-content:center;background:var(--petrol);color:var(--on-petrol);padding-block:15px}
+.form .btn{grid-column:1/-1;justify-content:center;background:var(--ink);color:var(--ground);padding-block:15px}
 .form .btn:hover{background:var(--brass-hi);color:var(--on-brass)}
 .form-note{grid-column:1/-1;font-size:14px;color:var(--ink-2);margin-top:-6px}
 .form-status{grid-column:1/-1;font-size:15px;color:var(--ink)}
@@ -258,11 +243,11 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stro
 .foot{background:var(--petrol-3);color:var(--on-petrol-2);font-size:14.5px}
 .foot .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding-block:28px}
 .foot .brand{color:var(--on-petrol)}
-.foot .brand-ar{color:var(--brass-hi)}
+.foot .brand-ar{color:var(--brass)}
 
 /* Location */
 .strip-loc{display:flex;align-items:center;gap:6px;color:var(--on-petrol-2)}
-.strip-loc .i{width:16px;height:16px;color:var(--brass-hi)}
+.strip-loc .i{width:16px;height:16px;color:var(--brass)}
 .contact-left{display:grid;gap:24px;align-content:start}
 .map-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-block-end:10px}
 .map-tabs button{font:600 14.5px var(--f-body);color:var(--on-petrol);background:transparent;border:1px solid var(--line-petrol);border-radius:2px;padding:8px 14px;cursor:pointer;transition:border-color .2s,color .2s,background .2s}
@@ -271,11 +256,11 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stro
 .map{border:1px solid var(--line-petrol);border-radius:4px;overflow:hidden;aspect-ratio:16/10;max-width:100%;background:var(--petrol-3)}
 .map iframe{display:block;width:100%;height:100%;border:0}
 .foot-addr{display:flex;align-items:center;gap:8px}
-.foot-addr .i{width:18px;height:18px;color:var(--brass-hi)}
+.foot-addr .i{width:18px;height:18px;color:var(--brass)}
 @media (max-width: 640px){ .strip-loc{display:none} }
 .hero-top{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px}
 .loc-badge{display:inline-flex;align-items:center;gap:8px;padding-block:6px;padding-inline:10px 15px;border:1px solid var(--brass-hi);border-radius:999px;background:color-mix(in srgb, var(--brass-hi) 14%, transparent);color:var(--on-petrol);font-size:15px;font-weight:600;text-decoration:none;transition:background .2s,color .2s}
-.loc-badge .i{width:18px;height:18px;color:var(--brass-hi);transition:color .2s}
+.loc-badge .i{width:18px;height:18px;color:var(--brass);transition:color .2s}
 .loc-badge:hover{background:var(--brass-hi);color:var(--on-brass)}
 .loc-badge:hover .i{color:var(--on-brass)}
 .motion .loc-badge .i{animation:pin-drop .9s cubic-bezier(.34,1.56,.64,1) .6s both}
@@ -295,7 +280,7 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stro
 @keyframes mk-ring{0%{opacity:.8;transform:scale(1)}100%{opacity:0;transform:scale(2.2)}}
 .feat-list{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
 .feat-list li{display:grid;grid-template-columns:36px 1fr;gap:14px;padding-block:15px;border-bottom:1px solid var(--rule);cursor:pointer}
-.feat-list .n{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--petrol);color:var(--brass-hi);font:700 14px var(--f-body);transition:background .25s,color .25s}
+.feat-list .n{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:var(--brass-hi);font:700 14px var(--f-body);transition:background .25s,color .25s}
 .feat-list li.on .n{background:var(--brass-hi);color:var(--on-brass)}
 .feat-list h3{font-family:var(--f-display);font-size:20px;line-height:1.3}
 .site[data-lang="ar"] .feat-list h3{font-weight:700}
@@ -304,7 +289,7 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stro
 /* Gallery of illustrated jobs */
 .shots{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
 .shot{margin:0;background:var(--petrol-3);border:1px solid var(--line-petrol);border-radius:4px;overflow:hidden;transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
-.shot:hover{transform:translateY(-6px);box-shadow:0 24px 40px -24px rgba(0,0,0,.7)}
+.shot:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
 .shot svg{display:block;width:100%;height:auto;aspect-ratio:4/3;direction:ltr}
 .shot figcaption{display:grid;gap:4px;padding:14px 16px 18px}
 .shot strong{font-family:var(--f-display);font-weight:400;font-size:19px;line-height:1.3;color:var(--on-petrol)}
@@ -324,15 +309,20 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stro
 .reel video{opacity:0;transition:opacity .6s}
 .reel.ready video{opacity:1}
 .reel.ready .reel-fallback{display:none}
+/* With a poster (the video's first frame) the real picture shows at once instead of the drawing */
+.reel video[poster]{opacity:1}
+.reel video[poster] ~ .reel-fallback{display:none}
 .reel-ctrl{position:absolute;inset-inline-end:14px;bottom:14px;display:none;gap:8px}
 .reel.ready .reel-ctrl{display:flex}
-.reel-ctrl button{font:600 14px var(--f-body);color:var(--on-petrol);background:rgba(11,21,30,.72);border:1px solid var(--line-petrol);border-radius:999px;padding:8px 15px;cursor:pointer;backdrop-filter:blur(6px);transition:border-color .2s,color .2s}
+.reel-ctrl button{font:600 14px var(--f-body);color:#F7F3EB;background:rgba(12,15,20,.78);border:1px solid rgba(247,243,235,.28);border-radius:999px;padding:8px 15px;cursor:pointer;backdrop-filter:blur(6px);transition:border-color .2s,color .2s}
 .reel-ctrl button:hover{border-color:var(--brass-hi);color:var(--brass-hi)}
+.reel.needs-tap #reelSound{background:var(--brass-hi);border-color:var(--brass-hi);color:var(--on-brass)}
+.motion .reel.needs-tap #reelSound{animation:ring 2.2s ease-out infinite}
 .reel:not(.paused) .when-paused,.reel.paused .when-playing,.reel:not(.sound) .when-sound,.reel.sound .when-muted{display:none}
 
 /* 3D tanker showcase */
 .showcase{background:radial-gradient(ellipse at 50% 75%, var(--petrol-2), var(--petrol) 65%);color:var(--on-petrol)}
-.showcase .eyebrow{color:var(--brass-hi)}
+.showcase .eyebrow{color:var(--brass)}
 .showcase + .showcase{border-top:1px solid var(--line-petrol)}
 .showcase .sec-head{margin-block-end:28px}
 .showcase .sec-head h2{color:var(--on-petrol)}
@@ -355,7 +345,7 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stro
 /* Motion — hidden start states apply only under html.motion (set in <head>), so the page stays fully visible without JS */
 :root{--ease:cubic-bezier(.22,1,.36,1)}
 .head{transition:box-shadow .3s}
-.head.scrolled{box-shadow:0 14px 32px -22px rgba(8,34,42,.55)}
+.head.scrolled{box-shadow:0 14px 32px -22px rgba(20,32,43,.35)}
 
 .motion .rv:not(.in){opacity:0;transform:translateY(30px)}
 .motion .rv[data-rv="start"]:not(.in){transform:translateX(-44px)}
@@ -381,23 +371,6 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stro
 .motion .mbar{animation:mbar-in .7s var(--ease) 1.2s both}
 @keyframes mbar-in{from{transform:translateY(100%)}}
 
-/* Truck drives in, wheels spin, hose drops into the manhole, then the body idles */
-.motion .tanker .drive{animation:tk-drive 1.8s var(--ease) .2s both}
-.motion .tanker .spin{animation:tk-spin 1.8s var(--ease) .2s both}
-.motion .tanker .bob{animation:tk-bob 2.8s ease-in-out 2.2s infinite}
-.motion .tanker .manhole{animation:tk-fade .5s ease-out 1.5s both}
-.motion .tanker .hose-line{stroke-dasharray:1;animation:tk-draw 1s ease-in-out 1.9s both}
-.motion .tanker .hose-rib{animation:tk-fade .4s ease-out 2.8s both,tk-flow .5s linear 3.2s infinite}
-.motion .tanker .level{animation:tk-level 7s ease-in-out 2.4s infinite alternate both}
-.motion .tanker .pump{animation:tk-hum .16s linear 3s infinite}
-@keyframes tk-flow{to{stroke-dashoffset:5}}
-@keyframes tk-level{from{transform:scaleY(.15)}to{transform:scaleY(.95)}}
-@keyframes tk-hum{50%{transform:translateY(.7px)}}
-@keyframes tk-drive{from{transform:translateX(-170px);opacity:0}35%{opacity:1}to{transform:none;opacity:1}}
-@keyframes tk-spin{from{transform:rotate(-300deg)}to{transform:none}}
-@keyframes tk-bob{0%,100%{transform:none}50%{transform:translateY(-2.5px)}}
-@keyframes tk-draw{from{stroke-dashoffset:1;opacity:0}15%{opacity:1}to{stroke-dashoffset:0;opacity:1}}
-@keyframes tk-fade{from{opacity:0}}
 
 /* Scroll progress line under the header */
 @supports (animation-timeline: scroll()){
@@ -416,6 +389,11 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stro
   .nav{display:none}
   .head .call{margin-inline-start:auto}
   .hero-grid{grid-template-columns:1fr;gap:20px;padding-block:28px 24px}
+  .hero-grid{min-height:0}
+  .hero-copy{max-width:none}
+  .tk-photos{position:static;width:auto;margin-block-start:18px;transform:none;aspect-ratio:auto}
+  .tk-stage{position:relative;aspect-ratio:1624/969;border:1px solid var(--line-petrol);border-radius:4px;-webkit-mask-image:none;mask-image:none}
+  .tk-dots{position:static;justify-content:center;margin-block-start:12px}
   .hero-grid > *{min-width:0}
   .hero h1 .calli{white-space:normal;font-size:clamp(28px,9vw,46px)}
   .feat{grid-template-columns:1fr;gap:28px}
@@ -460,6 +438,52 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stro
 @media (prefers-reduced-motion: reduce){
   *{transition:none !important;animation:none !important}
 }
+
+/* Deep frame: a charcoal utility bar and footer top and bottom, gold on dark */
+.strip{background:var(--ink);color:#B7BCC4}
+.strip a{color:#F7F3EB}
+.strip-loc{color:#B7BCC4}
+.strip-loc .i{color:var(--brass-hi)}
+.lang-btn{border-color:rgba(247,243,235,.24);color:#F7F3EB}
+.lang-btn:hover{border-color:var(--brass-hi);color:var(--brass-hi)}
+.foot{background:var(--ink);color:#B7BCC4}
+.foot .brand{color:#F7F3EB}
+.foot .brand-ar{color:var(--brass-hi)}
+.foot-addr .i{color:var(--brass-hi)}
+.foot .brand svg circle:first-child{fill:#F7F3EB}
+@media (max-width: 640px){
+  .mbar{background:var(--ink);border-top-color:rgba(247,243,235,.16)}
+  .mbar a{color:#F7F3EB}
+}
+
+/* Arabic: the photo sits on the left, so it fades on its right edge, next to the text */
+@media (min-width: 981px){
+  .site[dir="rtl"] .tk-stage{
+    -webkit-mask-image:linear-gradient(to left, transparent 0, #000 30%), linear-gradient(to bottom, transparent 0, #000 14%, #000 84%, transparent 100%);
+    mask-image:linear-gradient(to left, transparent 0, #000 30%), linear-gradient(to bottom, transparent 0, #000 14%, #000 84%, transparent 100%);
+  }
+}
+.site[dir="rtl"] .hero h1 .name-en{text-align:right}
+
+/* Slide-in animations start shifted sideways; never let that widen the page */
+.site{overflow-x:clip}
+
+/* Phones and tablets: the laptop hero, stacked — the truck runs edge to edge at the top
+   and fades into the page behind the headline, instead of sitting in a box under the buttons */
+@media (max-width: 980px){
+  .hero{overflow-x:clip}
+  .hero-grid{display:flex;flex-direction:column;padding-block:0 24px}
+  .tk-photos{order:-1;position:relative;inset:auto;width:100vw;margin-inline:calc(50% - 50vw);margin-block:0 -54px;transform:none;aspect-ratio:1624/969}
+  .tk-stage{position:absolute;inset:0;aspect-ratio:auto;border:0;border-radius:0;
+    -webkit-mask-image:linear-gradient(to bottom, #000 62%, transparent 100%);
+    mask-image:linear-gradient(to bottom, #000 62%, transparent 100%)}
+  .hero-copy{position:relative;z-index:1}
+  .hero-copy h1 .calli,.hero h1 .calli{white-space:nowrap;font-size:clamp(26px,8vw,42px)}
+  .hero .hero-top{margin-block-start:0}
+}
+@media (max-width: 640px){
+  .plate b{white-space:nowrap;font-size:clamp(18px,5.4vw,24px)}
+}
 </style>
 </head>
 <body>
@@ -468,6 +492,42 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stro
 
   <!-- Symbols reused across the page -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+              <linearGradient id="gTank" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#FFE680"/><stop offset=".18" stop-color="#FFD23F"/>
+                <stop offset=".55" stop-color="#F2B705"/><stop offset=".85" stop-color="#CF9500"/>
+                <stop offset="1" stop-color="#A87700"/>
+              </linearGradient>
+              <linearGradient id="gCab" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#FFE27A"/><stop offset=".5" stop-color="#F5BE1A"/>
+                <stop offset="1" stop-color="#C98F00"/>
+              </linearGradient>
+              <linearGradient id="gGlass" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#46627A"/><stop offset="1" stop-color="#0E1A24"/>
+              </linearGradient>
+              <!-- black/yellow chevron guard strip, as on the fleet's bumpers -->
+              <pattern id="pChev" width="14" height="10" patternUnits="userSpaceOnUse">
+                <rect width="14" height="10" fill="#F2B705"/><path d="M1 0h4l5 5-5 5H1l5-5z" fill="#14202B"/>
+              </pattern>
+              <linearGradient id="gSteel" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#6F7E80"/><stop offset=".45" stop-color="#C9D3D3"/>
+                <stop offset="1" stop-color="#5F6D6F"/>
+              </linearGradient>
+              <radialGradient id="gTire" cx=".45" cy=".4" r=".6">
+                <stop offset="0" stop-color="#3B4245"/><stop offset="1" stop-color="#0F1315"/>
+              </radialGradient>
+              <radialGradient id="gRim" cx=".4" cy=".35" r=".7">
+                <stop offset="0" stop-color="#F4F7F7"/><stop offset="1" stop-color="#7F8D8E"/>
+              </radialGradient>
+              <filter id="fBlur" x="-20%" y="-200%" width="140%" height="500%"><feGaussianBlur stdDeviation="6"/></filter>
+              <clipPath id="cArch"><rect x="0" y="0" width="660" height="268"/></clipPath>
+              <g id="wheel">
+                <circle r="32" fill="url(#gTire)"/>
+                <circle r="20" fill="url(#gRim)"/>
+                <circle r="13" fill="none" stroke="#5C6A6B" stroke-width="2.5" stroke-dasharray="2 4.8"/>
+                <circle r="6.5" fill="#4A575A"/>
+              </g>
+            </defs>
     <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3.5h3.6l1.9 4.8-2.3 1.5a11.5 11.5 0 0 0 6 6l1.5-2.3 4.8 1.9V19a2 2 0 0 1-2 2A17.5 17.5 0 0 1 3 5.5a2 2 0 0 1 2-2z"/></symbol>
     <symbol id="i-wa" viewBox="0 0 24 24"><path d="M20.5 11.7a8.6 8.6 0 0 1-12.7 7.5L3.5 20.5l1.4-4.1a8.6 8.6 0 1 1 15.6-4.7z"/><path d="M9 8.3c-.4 2.9 3 6.9 6.6 6.8l.9-1.6-2-1-.9.8a4.8 4.8 0 0 1-2.4-2.4l.8-.9-1-2z"/></symbol>
     <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="1.5"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></symbol>
@@ -524,7 +584,7 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stro
       <g clip-path="url(#cArch)" fill="#141B1E"><circle cx="180" cy="268" r="38"/><circle cx="252" cy="268" r="38"/><circle cx="546" cy="268" r="38"/></g>
       <use href="#wheel" x="180" y="268"/><use href="#wheel" x="252" y="268"/><use href="#wheel" x="546" y="268"/>
     </symbol>
-    <symbol id="logo" viewBox="0 0 48 48"><circle cx="24" cy="24" r="22" fill="var(--petrol)"/><circle cx="24" cy="24" r="18.5" fill="none" stroke="var(--brass-hi)" stroke-width="1.6"/><circle cx="24" cy="24" r="12" fill="none" stroke="var(--brass-hi)" stroke-width="1.2" opacity=".7"/><path d="M12.5 24h23M24 12.5v23M16 16l16 16M32 16L16 32" stroke="var(--brass-hi)" stroke-width="1" opacity=".45"/><path d="M24 15.5c3.2 3.8 5.3 6.8 5.3 9.3a5.3 5.3 0 0 1-10.6 0c0-2.5 2.1-5.5 5.3-9.3z" fill="var(--brass-hi)"/></symbol>
+    <symbol id="logo" viewBox="0 0 48 48"><circle cx="24" cy="24" r="22" fill="var(--ink)"/><circle cx="24" cy="24" r="18.5" fill="none" stroke="var(--brass-hi)" stroke-width="1.6"/><circle cx="24" cy="24" r="12" fill="none" stroke="var(--brass-hi)" stroke-width="1.2" opacity=".7"/><path d="M12.5 24h23M24 12.5v23M16 16l16 16M32 16L16 32" stroke="var(--brass-hi)" stroke-width="1" opacity=".45"/><path d="M24 15.5c3.2 3.8 5.3 6.8 5.3 9.3a5.3 5.3 0 0 1-10.6 0c0-2.5 2.1-5.5 5.3-9.3z" fill="var(--brass-hi)"/></symbol>
   </svg>
 
   <div class="strip">
@@ -574,7 +634,7 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stro
     <section class="hero">
       <div class="wrap">
         <div class="hero-grid">
-          <div>
+          <div class="hero-copy">
             <div class="hero-top">
               <p class="eyebrow">
                 <span class="en">Sewage suction · Septic tank emptying</span>
@@ -609,124 +669,12 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stro
             </div>
           </div>
 
-          <svg class="tanker" viewBox="0 0 660 340" role="img" aria-labelledby="tkTitle">
-            <title id="tkTitle">Sewage suction tanker truck branded Sewerage Water Tank — الشفط میاں مجاری</title>
-            <defs>
-              <linearGradient id="gTank" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#FFE680"/><stop offset=".18" stop-color="#FFD23F"/>
-                <stop offset=".55" stop-color="#F2B705"/><stop offset=".85" stop-color="#CF9500"/>
-                <stop offset="1" stop-color="#A87700"/>
-              </linearGradient>
-              <linearGradient id="gCab" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#FFE27A"/><stop offset=".5" stop-color="#F5BE1A"/>
-                <stop offset="1" stop-color="#C98F00"/>
-              </linearGradient>
-              <linearGradient id="gGlass" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#46627A"/><stop offset="1" stop-color="#0E1A24"/>
-              </linearGradient>
-              <!-- black/yellow chevron guard strip, as on the fleet's bumpers -->
-              <pattern id="pChev" width="14" height="10" patternUnits="userSpaceOnUse">
-                <rect width="14" height="10" fill="#F2B705"/><path d="M1 0h4l5 5-5 5H1l5-5z" fill="#14202B"/>
-              </pattern>
-              <linearGradient id="gSteel" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0" stop-color="#6F7E80"/><stop offset=".45" stop-color="#C9D3D3"/>
-                <stop offset="1" stop-color="#5F6D6F"/>
-              </linearGradient>
-              <radialGradient id="gTire" cx=".45" cy=".4" r=".6">
-                <stop offset="0" stop-color="#3B4245"/><stop offset="1" stop-color="#0F1315"/>
-              </radialGradient>
-              <radialGradient id="gRim" cx=".4" cy=".35" r=".7">
-                <stop offset="0" stop-color="#F4F7F7"/><stop offset="1" stop-color="#7F8D8E"/>
-              </radialGradient>
-              <filter id="fBlur" x="-20%" y="-200%" width="140%" height="500%"><feGaussianBlur stdDeviation="6"/></filter>
-              <clipPath id="cArch"><rect x="0" y="0" width="660" height="268"/></clipPath>
-              <g id="wheel">
-                <circle r="32" fill="url(#gTire)"/>
-                <circle r="20" fill="url(#gRim)"/>
-                <circle r="13" fill="none" stroke="#5C6A6B" stroke-width="2.5" stroke-dasharray="2 4.8"/>
-                <circle r="6.5" fill="#4A575A"/>
-              </g>
-            </defs>
-
-            <g class="drive">
-            <!-- ground shadow -->
-            <ellipse cx="350" cy="302" rx="300" ry="9" fill="#000" opacity=".45" filter="url(#fBlur)"/>
-
-            <g class="bob">
-            <!-- chassis -->
-            <rect x="96" y="232" width="506" height="14" rx="3" fill="#1F2A2E"/>
-            <path d="M150 226h14v8h-14zM270 226h14v8h-14zM390 226h14v8h-14z" fill="#2A3438"/>
-
-            <!-- side guard with chevrons -->
-            <rect x="292" y="244" width="214" height="10" fill="url(#pChev)"/>
-
-            <!-- tank -->
-            <ellipse cx="112" cy="162" rx="22" ry="70" fill="url(#gTank)"/>
-            <rect x="110" y="92" width="322" height="140" rx="12" fill="url(#gTank)"/>
-            <rect x="120" y="99" width="300" height="7" rx="3.5" fill="#FFFFFF" opacity=".45"/>
-            <rect x="104" y="92" width="9" height="140" rx="3" fill="#D29C00"/>
-            <rect x="424" y="92" width="9" height="140" rx="3" fill="#D29C00"/>
-            <text class="tk-en" x="276" y="124" text-anchor="middle">SEWERAGE WATER TANK</text>
-            <path d="M190 136h172" stroke="#14202B" stroke-width="1.2" opacity=".35"/>
-            <text class="tk-ar" x="276" y="178" text-anchor="middle" direction="rtl">الشفط میاں مجاری</text>
-            <text class="tk-num" x="276" y="216" text-anchor="middle" data-wa-text>+968 7806 1190</text>
-
-            <!-- sight glass: tank level rises while it pumps -->
-            <rect x="122" y="146" width="10" height="64" rx="5" fill="#14202B" stroke="#A87700" stroke-width="1.5"/>
-            <rect class="level" x="124" y="150" width="6" height="56" rx="3" fill="#7FA35A"/>
-
-            <!-- manhole lids + rail on top -->
-            <path d="M150 78h260" stroke="#D29C00" stroke-width="3" stroke-linecap="round"/>
-            <path d="M160 78v14M280 78v14M400 78v14" stroke="#D29C00" stroke-width="2.5"/>
-            <g fill="#E5AD00">
-              <path d="M196 92q0-10 22-10t22 10z"/><path d="M316 92q0-10 22-10t22 10z"/>
-            </g>
-
-            <!-- rear valve, tail light, rear bumper -->
-            <rect x="80" y="196" width="22" height="12" rx="3" fill="url(#gSteel)"/>
-            <rect x="100" y="222" width="10" height="7" rx="1.5" fill="#D9534F"/>
-            <rect x="82" y="238" width="32" height="10" fill="url(#pChev)"/>
-
-            <!-- vacuum pump + front ladder -->
-            <rect x="433" y="126" width="30" height="110" rx="3" fill="#1E2A33"/>
-            <rect class="pump" x="437" y="176" width="22" height="48" rx="6" fill="#34424D"/>
-            <path d="M448 126V104h-28" fill="none" stroke="url(#gSteel)" stroke-width="6" stroke-linejoin="round"/>
-            <path d="M440 86V236M456 86V236" stroke="#D29C00" stroke-width="3"/>
-            <path d="M440 104h16M440 124h16M440 144h16M440 164h16M440 184h16M440 204h16M440 224h16" stroke="#D29C00" stroke-width="2.5"/>
-
-            <!-- cab -->
-            <path d="M462 246V104q0-16 16-16h100q14 0 19 12l11 50q4 10 4 22v74z" fill="url(#gCab)" stroke="#B98500"/>
-            <rect x="478" y="92" width="118" height="5" rx="2.5" fill="#14202B" opacity=".8"/>
-            <path d="M486 102h62v48h-62q-6 0-6-6v-36q0-6 6-6z" fill="url(#gGlass)"/>
-            <path d="M560 100h26q6 0 8 6l10 44h-44z" fill="url(#gGlass)"/>
-            <path d="M492 104l20 0-26 40v-30z" fill="#FFFFFF" opacity=".22"/>
-            <path d="M478 158h78v76h-78z" fill="none" stroke="#C28A00"/>
-            <rect x="542" y="168" width="10" height="3" rx="1.5" fill="#7A5A00"/>
-            <text class="tk-door" x="517" y="210" text-anchor="middle">24/7</text>
-            <rect x="606" y="168" width="6" height="44" rx="2" fill="#14202B"/>
-            <rect class="beacon" x="518" y="80" width="24" height="8" rx="3" fill="#FF8A1F"/>
-            <path d="M606 112v22" stroke="#14202B" stroke-width="3"/><rect x="608" y="108" width="7" height="26" rx="2" fill="#14202B"/>
-            <rect x="604" y="220" width="10" height="11" rx="2" fill="#FFF4C8"/>
-            <rect x="596" y="236" width="22" height="14" rx="3" fill="#14202B"/>
-            <rect x="486" y="240" width="40" height="5" rx="2" fill="#14202B"/>
-
-            <!-- wheel arches -->
-            <g clip-path="url(#cArch)" fill="#141B1E">
-              <circle cx="180" cy="268" r="38"/><circle cx="252" cy="268" r="38"/><circle cx="546" cy="268" r="38"/>
-            </g>
-            </g><!-- /bob -->
-
-            <!-- wheels -->
-            <g transform="translate(180 268)"><g class="spin"><use href="#wheel"/></g></g>
-            <g transform="translate(252 268)"><g class="spin"><use href="#wheel"/></g></g>
-            <g transform="translate(546 268)"><g class="spin"><use href="#wheel"/></g></g>
-            </g><!-- /drive -->
-
-            <!-- suction hose into manhole -->
-            <ellipse class="manhole" cx="40" cy="301" rx="30" ry="6" fill="#0A1A1F" stroke="#5C6A6B" stroke-width="2"/>
-            <path class="hose-line" pathLength="1" d="M84 202C56 208 40 234 48 260c5 18-6 32-8 40" fill="none" stroke="#F4F7F6" stroke-width="10" stroke-linecap="round"/>
-            <path class="hose-rib" d="M84 202C56 208 40 234 48 260c5 18-6 32-8 40" fill="none" stroke="#B7C3C3" stroke-width="10" stroke-dasharray="1.5 3.5"/>
-          </svg>
+          <div class="tk-photos" id="tkPhotos">
+            <div class="tk-stage">
+              <img class="on" src="images/tank.jpg" data-src-en="images/tank.jpg" data-src-ar="images/tank-ar.jpg" alt="Our yellow suction tanker, marked الشفط میاں مجاری, emptying a manhole" fetchpriority="high">
+            </div>
+            <div class="tk-dots" role="group" aria-label="Choose a photo of the tanker"></div>
+          </div>
         </div>
 
         <div class="plate">
@@ -787,11 +735,11 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stro
           <h2><span class="en">Our tanker on the job</span><span class="ar">صهريجنا أثناء العمل</span></h2>
           <p><span class="en">Watch our tanker at work, and see the jobs we do every week across Muscat.</span><span class="ar">شاهد صهريجنا أثناء العمل، وتعرّف على الأعمال التي ننجزها كل أسبوع في مسقط.</span></p>
         </div>
-        <!-- Put your video at videos/tanker.mp4 (H.264 MP4 plays everywhere). Portrait or landscape both fit. It loads when scrolled near, then loops with sound. -->
+        <!-- Put your video at videos/tanker.mp4 (H.264 MP4 plays everywhere). Portrait or landscape both fit. It starts loading with the page, then loops with sound. -->
         <div class="work">
         <div class="reel" id="reel">
-          <video id="reelVideo" muted loop playsinline preload="none" aria-label="Video of our yellow tanker at work">
-            <source data-src="videos/tanker.mp4" type="video/mp4">
+          <video id="reelVideo" muted loop playsinline preload="auto" poster="videos/tanker-poster.jpg" aria-label="Video of our yellow tanker at work">
+            <source src="videos/tanker.mp4" type="video/mp4">
           </video>
           <svg class="reel-fallback" viewBox="0 0 640 360" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Illustration of our yellow tanker at sunset in front of the mountains">
             <defs>
@@ -1297,6 +1245,7 @@ const CONFIG = {
     document.documentElement.lang = lang;
     document.querySelectorAll("[data-en][data-ar]").forEach(el => el.textContent = el.dataset[lang]);
     document.querySelectorAll("[data-ph-en]").forEach(el => el.placeholder = lang === "ar" ? el.dataset.phAr : el.dataset.phEn);
+    document.querySelectorAll("[data-src-en]").forEach(el => el.src = lang === "ar" ? el.dataset.srcAr : el.dataset.srcEn);
     try { localStorage.setItem("swt-lang", lang); } catch (e) {}
   }
   let saved = null;
@@ -1408,6 +1357,39 @@ const CONFIG = {
       el.closest(".hero") ? requestAnimationFrame(() => requestAnimationFrame(() => show(el))) : io.observe(el));
   }
 
+  /* ===== Hero photos of the tanker, shown one after another ===== */
+  const tkPhotos = document.getElementById("tkPhotos");
+  if (tkPhotos) {
+    const slides = [...tkPhotos.querySelectorAll(".tk-stage img")];
+    const dots = tkPhotos.querySelector(".tk-dots");
+    if (slides.length > 1) {
+      let at = 0, timer = 0;
+      const show = n => {
+        at = (n + slides.length) % slides.length;
+        slides.forEach((img, k) => img.classList.toggle("on", k === at));
+        buttons.forEach((b, k) => b.setAttribute("aria-pressed", String(k === at)));
+      };
+      const rest = () => { clearInterval(timer); timer = setInterval(() => show(at + 1), 4000); };
+      const stop = () => clearInterval(timer);
+      const buttons = slides.map((img, n) => {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.setAttribute("aria-label", "Photo " + (n + 1) + " of " + slides.length);
+        b.setAttribute("aria-pressed", String(n === 0));
+        b.addEventListener("click", () => { show(n); rest(); });
+        dots.append(b);
+        return b;
+      });
+      // Hold still while someone is looking at one photo, or while the tab is in the background
+      tkPhotos.addEventListener("pointerenter", stop);
+      tkPhotos.addEventListener("pointerleave", rest);
+      tkPhotos.addEventListener("focusin", stop);
+      tkPhotos.addEventListener("focusout", rest);
+      document.addEventListener("visibilitychange", () => document.hidden ? stop() : rest());
+      if (!matchMedia("(prefers-reduced-motion: reduce)").matches) rest();
+    }
+  }
+
   /* ===== Video reel: loops with sound on. Browsers refuse sound until the visitor has tapped, clicked or
      pressed a key on the page, so until then it plays muted and the sound comes on with that first interaction ===== */
   const reel = document.getElementById("reel");
@@ -1415,15 +1397,28 @@ const CONFIG = {
     const video = document.getElementById("reelVideo");
     let userPaused = matchMedia("(prefers-reduced-motion: reduce)").matches;  // visitors who ask for less motion start paused
     let wantSound = true;                   // false once the visitor presses Mute
-    let inView = false;
+    let retry = 0, tries = 0;
     const sync = () => reel.classList.toggle("paused", video.paused);
+    // At least a quarter of the video on screen, measured at the moment of asking so a late layout change can't leave it stale
+    const onScreen = () => {
+      const r = reel.getBoundingClientRect();
+      return Math.min(r.bottom, innerHeight) - Math.max(r.top, 0) >= r.height * 0.25;
+    };
+    // Called by everything that might let the video start; does nothing unless it should be playing right now
     const play = () => {
-      if (userPaused || !inView || !video.paused) return;
+      clearTimeout(retry);
+      if (userPaused || document.hidden || !video.paused || video.readyState < 2 || !onScreen()) return;
       video.muted = !wantSound;
-      video.play().catch(() => {
-        if (video.muted) return;
-        video.muted = true;                 // only the sound was refused: keep playing, muted
-        video.play().catch(() => {});
+      video.play().catch(e => {
+        if (e && e.name === "NotAllowedError" && !video.muted) {
+          video.muted = true;               // only the sound was refused: keep playing, muted
+          reel.classList.add("needs-tap");  // and make the Sound on button stand out
+          return video.play();
+        }
+        throw e;
+      }).catch(() => {
+        // Refused even muted (for example the tab isn't showing yet): try again shortly rather than stay stuck
+        if (++tries <= 5) retry = setTimeout(play, 1000);
       });
     };
     const unlockEvents = ["click", "keydown", "touchend"];
@@ -1433,39 +1428,48 @@ const CONFIG = {
       if (navigator.userActivation && !navigator.userActivation.hasBeenActive) return;  // e.g. a swipe, which doesn't count
       stopUnlock();
       if (wantSound && video.muted) video.muted = false;
+      tries = 0;
+      play();                               // also starts a video the browser had refused to play
     }
     unlockEvents.forEach(t => document.addEventListener(t, unlock, true));
 
-    video.addEventListener("loadedmetadata", () => reel.classList.toggle("landscape", video.videoWidth > video.videoHeight));
+    const onMeta = () => reel.classList.toggle("landscape", video.videoWidth > video.videoHeight);
+    const onData = () => { reel.classList.add("ready"); sync(); play(); };
+    video.addEventListener("loadedmetadata", onMeta);
     video.querySelector("source").addEventListener("error", () => reel.classList.add("landscape"));
-    video.addEventListener("loadeddata", () => { reel.classList.add("ready"); play(); sync(); });
+    video.addEventListener("loadeddata", onData);
+    video.addEventListener("canplay", play);
+    video.addEventListener("playing", () => { tries = 0; });
     video.addEventListener("play", sync);
     video.addEventListener("pause", sync);
-    video.addEventListener("volumechange", () => reel.classList.toggle("sound", !video.muted));
+    video.addEventListener("volumechange", () => {
+      reel.classList.toggle("sound", !video.muted);
+      if (!video.muted) reel.classList.remove("needs-tap");
+    });
     document.getElementById("reelPlay").addEventListener("click", () => {
       userPaused = !video.paused;
+      tries = 0;
       if (video.paused) play(); else video.pause();
     });
     document.getElementById("reelSound").addEventListener("click", () => {
       stopUnlock();
       wantSound = video.muted;
       video.muted = !wantSound;
-      if (wantSound && video.paused) { userPaused = false; play(); }
+      if (wantSound && video.paused) { userPaused = false; tries = 0; play(); }
     });
-    // Pause while scrolled away to save battery; resume on return unless the visitor paused it
-    new IntersectionObserver(([entry]) => {
-      inView = entry.isIntersecting;
+    // Play when the video comes on screen or the tab comes back; pause when either goes away, to save battery and data
+    new IntersectionObserver(() => {
       if (!reel.classList.contains("ready")) return;
-      if (inView) play(); else video.pause();
-    }, { threshold: 0.25 }).observe(reel);
-    // Fetch the video only as the reel nears the screen, so opening the page doesn't download it
-    const lazyReel = new IntersectionObserver(([entry]) => {
-      if (!entry.isIntersecting) return;
-      lazyReel.disconnect();
-      video.querySelectorAll("source[data-src]").forEach(s => s.src = s.dataset.src);
-      video.load();
-    }, { rootMargin: "600px 0px" });
-    lazyReel.observe(reel);
+      if (onScreen()) play(); else video.pause();
+    }, { threshold: [0, 0.25, 0.5] }).observe(reel);
+    document.addEventListener("visibilitychange", () => {
+      if (!reel.classList.contains("ready")) return;
+      if (document.hidden) video.pause(); else play();
+    });
+    // The video starts loading while the page is still being read, so it can be ahead of these listeners
+    if (video.readyState >= 1) onMeta();
+    if (video.readyState >= 2) onData();
+    else if (video.networkState === HTMLMediaElement.NETWORK_NO_SOURCE) reel.classList.add("landscape");
   }
 
   /* ===== Tanker features: hovering, focusing or tapping a feature lights its marker on the drawing ===== */

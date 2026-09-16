@@ -48,26 +48,36 @@ the `telephone` field in the `application/ld+json` block in `<head>`.
 
 The "At work" section plays `videos/tanker.mp4` on a loop, whole and uncropped.
 A portrait (phone) video sits beside the gallery pictures on desktop and fills
-the width on mobile; a landscape video spans the full width instead. It is only
-downloaded when a visitor scrolls near that section; until then, and if the file
-is missing, a drawing is shown in its place.
+the width on mobile; a landscape video spans the full width instead. It starts
+downloading as soon as the page opens, so it is ready to play by the time a
+visitor scrolls to it. Until it plays, its first frame
+(`videos/tanker-poster.jpg`) is shown in its place.
 
 Sound is on by default, with one limit set by every browser: a page cannot play
 sound before the visitor has tapped, clicked or pressed a key on it. Until then
 the video plays muted, and the sound comes on with that first interaction.
 Visitors can press Mute at any time.
 
-Use H.264 MP4 so it plays in every browser, including iPhone. Keep it small:
-a short loop does not need to be more than a few MB. The current file is 18 MB
-at 1080×1920; to shrink it to 720×1280 with [ffmpeg](https://ffmpeg.org),
-keeping the sound:
+### Replacing the video
+
+Keep it light. The current file is 720×1280 at about 1 Mbps (1.4 MB for 11
+seconds), which plays without stalling on a 1.5 Mbps connection. The phone
+original was 18 MB at 12.8 Mbps and stalled constantly on the same connection;
+it is kept in the git history (commit `d849bbc`).
+
+Export H.264 MP4 so it plays everywhere, including iPhone. With
+[ffmpeg](https://ffmpeg.org), from the phone original:
 
 ```bash
-ffmpeg -i tanker.mp4 -vf scale=720:-2 -c:v libx264 -crf 28 -preset slow -c:a aac -b:a 96k -movflags +faststart tanker-small.mp4
+ffmpeg -i original.mp4 -vf scale=720:-2:flags=lanczos -c:v libx264 -crf 24 -preset slow -profile:v high -pix_fmt yuv420p -c:a aac -b:a 96k -movflags +faststart videos/tanker.mp4
+ffmpeg -i videos/tanker.mp4 -frames:v 1 -q:v 3 videos/tanker-poster.jpg
 ```
 
-`+faststart` moves the video's index to the start of the file so playback
-begins sooner.
+- `-crf 24` sets quality: lower is sharper and bigger.
+- `+faststart` puts the video's index at the front of the file, so playback can
+  begin before the whole file has downloaded.
+- The second command saves the first frame as the poster image; redo it
+  whenever the video changes.
 
 ## Putting it online
 
