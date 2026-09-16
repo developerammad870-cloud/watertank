@@ -465,6 +465,24 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stro
 }
 .site[dir="rtl"] .hero h1 .name-en{text-align:right}
 
+/* Mobile menu: a button in the header opens the links in a panel below it */
+.menu-btn{display:none}
+@media (max-width: 980px){
+  .menu-btn{display:grid;place-content:center;gap:5px;flex:none;width:44px;height:44px;margin-inline-start:12px;padding:0;background:transparent;color:var(--ink);border:1px solid var(--rule);border-radius:3px;cursor:pointer}
+  .menu-btn span{display:block;width:20px;height:2px;background:currentColor;border-radius:1px;transition:transform .25s var(--ease),opacity .2s}
+  .head.open .menu-btn span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .head.open .menu-btn span:nth-child(2){opacity:0}
+  .head.open .menu-btn span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .head .nav{display:none;position:absolute;top:100%;inset-inline:0;flex-direction:column;gap:0;margin:0;padding:6px clamp(16px,4vw,40px) 14px;background:var(--ground);border-bottom:1px solid var(--rule);box-shadow:var(--shadow)}
+  .head.open .nav{display:flex}
+  .head .nav a{padding-block:14px;font-size:17px;color:var(--ink);border-bottom:1px solid var(--rule)}
+  .head .nav a:last-child{border-bottom:0}
+  .head .nav a:hover{color:var(--brass)}
+}
+@media (max-width: 640px){
+  .menu-btn{margin-inline-start:auto}
+}
+
 /* Slide-in animations start shifted sideways; never let that widen the page */
 .site{overflow-x:clip}
 
@@ -614,7 +632,7 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stro
           <span class="brand-ar" lang="ar" dir="rtl">الشفط میاں مجاری</span>
         </span>
       </a>
-      <nav class="nav" aria-label="Main">
+      <nav class="nav" id="mainNav" aria-label="Main">
         <a href="#services"><span class="en">Services</span><span class="ar">الخدمات</span></a>
         <a href="#work"><span class="en">Gallery</span><span class="ar">المعرض</span></a>
         <a href="#fleet"><span class="en">Tankers</span><span class="ar">الصهاريج</span></a>
@@ -627,6 +645,9 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stro
         <svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>
         <span class="en">Call now</span><span class="ar">اتصل الآن</span>
       </a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mainNav" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
@@ -1261,6 +1282,16 @@ const CONFIG = {
   const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 8);
   onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
+
+  /* ===== Mobile menu ===== */
+  const menuBtn = document.querySelector(".menu-btn");
+  if (menuBtn) {
+    const setMenu = open => { header.classList.toggle("open", open); menuBtn.setAttribute("aria-expanded", String(open)); };
+    menuBtn.addEventListener("click", () => setMenu(!header.classList.contains("open")));
+    document.querySelectorAll("#mainNav a").forEach(a => a.addEventListener("click", () => setMenu(false)));
+    document.addEventListener("keydown", e => { if (e.key === "Escape" && header.classList.contains("open")) { setMenu(false); menuBtn.focus(); } });
+    document.addEventListener("click", e => { if (header.classList.contains("open") && !header.contains(e.target)) setMenu(false); });
+  }
 
   if (document.documentElement.classList.contains("motion")) {
     const setDelay = (el, ms) => { el.style.setProperty("--d", ms + "ms"); el._d = ms; };
