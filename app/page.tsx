@@ -10,7 +10,7 @@ const jsonLd = {
   "url": SITE_URL,
   "image": SITE_URL + "/images/tank.jpg",
   "telephone": "+96876368205",
-  "email": "mudassarlatif13@gmail.com",
+  "email": "shafit.mianmajari@gmail.com",
   "address": [
     {
       "@type": "PostalAddress",
@@ -2274,7 +2274,7 @@ export default function Page() {
                       {" "}
                     </a>
                     {" "}
-                    <a data-email="" href="mailto:mudassarlatif13@gmail.com">
+                    <a data-email="" href="mailto:shafit.mianmajari@gmail.com">
                       {" "}
                       <svg className="i" aria-hidden="true">
                         <use href="#i-mail" />
@@ -2290,7 +2290,7 @@ export default function Page() {
                           </span>
                         </small>
                         <strong className="ltr" data-email-text="">
-                          {"mudassarlatif13@gmail.com"}
+                          {"shafit.mianmajari@gmail.com"}
                         </strong>
                       </span>
                       {" "}

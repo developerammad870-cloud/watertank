@@ -16,7 +16,7 @@ export function initSite() {
     phoneIntl:    "96876368205",     // digits only, with country code (used for phone calls)
     whatsappDisplay: "+968 7806 1190", // WhatsApp number as shown on the site
     whatsappIntl: "96878061190",     // digits only, with country code (used for WhatsApp)
-    email:        "mudassarlatif13@gmail.com"
+    email:        "shafit.mianmajari@gmail.com"
   };
   /* =========================================== */
 

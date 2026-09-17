@@ -36,7 +36,7 @@ const CONFIG = {
   phoneIntl:    "96876368205",
   whatsappDisplay: "+968 7806 1190",
   whatsappIntl: "96878061190",
-  email:        "mudassarlatif13@gmail.com"
+  email:        "shafit.mianmajari@gmail.com"
 };
 ```
 
