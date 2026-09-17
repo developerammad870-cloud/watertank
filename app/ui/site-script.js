@@ -31,21 +31,7 @@ export function initSite() {
     document.querySelectorAll("[data-email-text]").forEach(el => el.textContent = CONFIG.email);
     document.getElementById("yr").textContent = new Date().getFullYear();
 
-    function setLang(lang) {
-      site.dataset.lang = lang;
-      site.dir = lang === "ar" ? "rtl" : "ltr";
-      document.documentElement.lang = lang;
-      document.querySelectorAll("[data-en][data-ar]").forEach(el => el.textContent = el.dataset[lang]);
-      document.querySelectorAll("[data-ph-en]").forEach(el => el.placeholder = lang === "ar" ? el.dataset.phAr : el.dataset.phEn);
-      document.querySelectorAll("[data-src-en]").forEach(el => el.src = lang === "ar" ? el.dataset.srcAr : el.dataset.srcEn);
-      try { localStorage.setItem("swt-lang", lang); } catch (e) {}
-    }
-    let saved = null;
-    try { saved = localStorage.getItem("swt-lang"); } catch (e) {}
-    if (saved === "ar") setLang("ar");
-
-    document.getElementById("langBtn").addEventListener("click", () =>
-      setLang(site.dataset.lang === "ar" ? "en" : "ar"));
+    // Language: English at /, Arabic at /ar; the page arrives in its language, and the switch is a plain link.
 
     /* ===== Motion ===== */
     window.__rv = true;
@@ -102,8 +88,8 @@ export function initSite() {
 
       reveal(".hero .eyebrow");
       reveal(".loc-badge", null, 80);
-      words(".hero h1 .calli", 120);
-      words(".hero h1 .name-en", 520);
+      words(".hero .hero-title .calli", 120);
+      words(".hero .hero-title .name-en", 520);
       reveal(".hero .lede", null, 700);
       reveal(".hero-cta", null, 850);
       stagger(".plate > div", null, 110, 1000);
@@ -157,6 +143,11 @@ export function initSite() {
       // The hero is the first view, so it plays on load (after one painted frame); the rest waits until scrolled into view
       document.querySelectorAll(".rv, [data-words], [data-io]").forEach(el =>
         el.closest(".hero") ? requestAnimationFrame(() => requestAnimationFrame(() => show(el))) : io.observe(el));
+
+      // Looping effects (pulse, button ring, marker rings, beacon) pause while their part of the page is off screen, so the phone isn't repainting what nobody sees
+      const loops = new IntersectionObserver(entries => entries.forEach(({ isIntersecting, target }) =>
+        target.classList.toggle("off", !isIntersecting)));
+      document.querySelectorAll(".strip, .hero, #work, #features").forEach(el => loops.observe(el));
     }
 
     /* ===== Hero photos of the tanker, shown one after another ===== */
@@ -268,7 +259,10 @@ export function initSite() {
         if (!reel.classList.contains("ready")) return;
         if (document.hidden) video.pause(); else play();
       });
-      // The video starts loading while the page is still being read, so it can be ahead of these listeners
+      // The video downloads as soon as the page itself has loaded, so it doesn't slow the first view but is ready
+      // well before the visitor scrolls to it
+      const preload = () => { if (video.preload !== "auto") { video.preload = "auto"; video.load(); } };
+      if (document.readyState === "complete") preload(); else window.addEventListener("load", preload, { once: true });
       if (video.readyState >= 1) onMeta();
       if (video.readyState >= 2) onData();
       else if (video.networkState === HTMLMediaElement.NETWORK_NO_SOURCE) reel.classList.add("landscape");

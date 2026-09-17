@@ -61,7 +61,7 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stro
 @media (prefers-reduced-motion: no-preference){ .pulse{animation:pulse 2.2s infinite} }
 @keyframes pulse{70%{box-shadow:0 0 0 9px rgba(242,183,5,0)}100%{box-shadow:0 0 0 0 rgba(242,183,5,0)}}
 .strip a{color:var(--on-petrol);text-decoration:none;font-weight:600}
-.lang-btn{background:transparent;border:1px solid var(--line-petrol);color:var(--on-petrol);padding:3px 14px;border-radius:2px;cursor:pointer;font-size:14px;font-family:var(--font-naskh),var(--font-public-sans),sans-serif}
+.lang-btn{display:inline-block;text-decoration:none;line-height:normal;background:transparent;border:1px solid var(--line-petrol);color:var(--on-petrol);padding:3px 14px;border-radius:2px;cursor:pointer;font-size:14px;font-family:var(--font-naskh),var(--font-public-sans),sans-serif}
 .lang-btn:hover{border-color:var(--brass-hi);color:var(--brass-hi)}
 .strip-right{display:flex;align-items:center;gap:16px}
 
@@ -87,10 +87,10 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stro
 .hero{background-blend-mode:normal}
 .hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center;padding-block:26px 32px}
 .hero .eyebrow{color:var(--brass)}
-.hero h1{margin-block:10px 16px}
-.hero h1 .calli{display:block;font-size:clamp(30px,4.2vw,52px);line-height:1.55;color:var(--brass);white-space:nowrap}
-.hero h1 .name-en{display:block;direction:ltr;unicode-bidi:isolate;font-family:var(--font-marcellus),Georgia,serif;font-size:clamp(20px,2.3vw,30px);letter-spacing:.12em;text-transform:uppercase;line-height:1.2;padding-block:10px 0;margin-block-start:6px;position:relative}
-.hero h1 .name-en::before{content:"";position:absolute;inset-inline:0;top:0;height:1px;background:var(--brass-hi);transform-origin:right;transition:transform 1.2s var(--ease) var(--d,0ms)}
+.hero .hero-title{margin-block:10px 16px;text-wrap:balance}
+.hero .hero-title .calli{display:block;font-size:clamp(30px,4.2vw,52px);line-height:1.55;color:var(--brass);white-space:nowrap}
+.hero .hero-title .name-en{display:block;direction:ltr;unicode-bidi:isolate;font-family:var(--font-marcellus),Georgia,serif;font-size:clamp(20px,2.3vw,30px);letter-spacing:.12em;text-transform:uppercase;line-height:1.2;padding-block:10px 0;margin-block-start:6px;position:relative}
+.hero .hero-title .name-en::before{content:"";position:absolute;inset-inline:0;top:0;height:1px;background:var(--brass-hi);transform-origin:right;transition:transform 1.2s var(--ease) var(--d,0ms)}
 .lede{color:var(--on-petrol-2);max-width:54ch;font-size:18px}
 .site[data-lang="ar"] .lede{font-size:19px;line-height:1.9}
 .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-block-start:22px}
@@ -99,7 +99,7 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stro
    background rather than sitting in a box, with one angle following another */
 .hero-grid{position:relative;min-height:clamp(360px,42vw,520px)}
 .hero-copy{position:relative;z-index:1;max-width:min(100%, 560px, calc(100vw - min(53vw, 840px) - max(40px, (100vw - 1100px) / 2) - 76px))}
-.hero-copy h1 .calli{white-space:nowrap;font-size:clamp(22px,2vw,32px)}
+.hero-copy .hero-title .calli{white-space:nowrap;font-size:clamp(22px,2vw,32px)}
 .tk-photos{position:absolute;top:50%;transform:translateY(-50%);inset-inline-end:calc(50% - 50vw);width:min(53vw,840px);aspect-ratio:1624/969}
 .tk-stage{position:absolute;inset:0;overflow:hidden;
   -webkit-mask-image:linear-gradient(to right, transparent 0, #000 30%), linear-gradient(to bottom, transparent 0, #000 14%, #000 84%, transparent 100%);
@@ -336,7 +336,7 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stro
 
 .motion [data-words] .w{display:inline-block;transition:opacity .8s var(--ease),transform .8s var(--ease),filter .8s var(--ease);transition-delay:calc(var(--d,0ms) + var(--i,0) * 75ms)}
 .motion [data-words]:not(.in) .w{opacity:0;transform:translateY(.55em);filter:blur(6px)}
-.motion .hero h1 .name-en:not(.in)::before{transform:scaleX(0)}
+.motion .hero .hero-title .name-en:not(.in)::before{transform:scaleX(0)}
 
 .bar i{transform-origin:left;transition:transform 1.4s var(--ease) calc(var(--d,0ms) + 250ms)}
 [dir="rtl"] .bar i{transform-origin:right}
@@ -348,6 +348,7 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stro
 .motion .steps li:not(.in) .num{transform:scale(.3)}
 
 .motion .hero .btn-brass{animation:ring 2.6s ease-out 3s infinite}
+.off .pulse,.off .btn-brass,.off .mk .ring,.off .glow,.off #reelSound{animation-play-state:paused !important}
 @keyframes ring{0%{box-shadow:0 0 0 0 rgba(242,183,5,.6)}75%,100%{box-shadow:0 0 0 16px rgba(242,183,5,0)}}
 .motion .mbar{animation:mbar-in .7s var(--ease) 1.2s both}
 @keyframes mbar-in{from{transform:translateY(100%)}}
@@ -376,7 +377,7 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stro
   .tk-stage{position:relative;aspect-ratio:1624/969;border:1px solid var(--line-petrol);border-radius:4px;-webkit-mask-image:none;mask-image:none}
   .tk-dots{position:static;justify-content:center;margin-block-start:12px}
   .hero-grid > *{min-width:0}
-  .hero h1 .calli{white-space:normal;font-size:clamp(28px,9vw,46px)}
+  .hero .hero-title .calli{white-space:normal;font-size:clamp(28px,9vw,46px)}
   .feat{grid-template-columns:1fr;gap:28px}
   .shots,.reel.landscape + .shots{grid-template-columns:repeat(2,1fr)}
   .work{grid-template-columns:1fr;gap:28px}
@@ -444,7 +445,7 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stro
     mask-image:linear-gradient(to left, transparent 0, #000 30%), linear-gradient(to bottom, transparent 0, #000 14%, #000 84%, transparent 100%);
   }
 }
-.site[dir="rtl"] .hero h1 .name-en{text-align:right}
+.site[dir="rtl"] .hero .hero-title .name-en{text-align:right}
 
 /* Mobile menu: a button in the header opens the links in a panel below it */
 .menu-btn{display:none}
@@ -477,9 +478,12 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stro
     -webkit-mask-image:linear-gradient(to bottom, #000 62%, transparent 100%);
     mask-image:linear-gradient(to bottom, #000 62%, transparent 100%)}
   .hero-copy{position:relative;z-index:1}
-  .hero-copy h1 .calli,.hero h1 .calli{white-space:nowrap;font-size:clamp(26px,8vw,42px)}
+  .hero-copy .hero-title .calli,.hero .hero-title .calli{white-space:nowrap;font-size:clamp(26px,8vw,42px)}
   .hero .hero-top{margin-block-start:0}
 }
 @media (max-width: 640px){
   .plate b{white-space:nowrap;font-size:clamp(18px,5.4vw,24px)}
 }
+
+/* The language switch is a link, so keep its button weight inside the top strip */
+.strip a.lang-btn{font-weight:400}

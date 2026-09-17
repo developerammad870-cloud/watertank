@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import Script from 'next/script'
 import {
   Amiri,
@@ -20,31 +20,15 @@ const lemonada = Lemonada({ subsets: ['arabic', 'latin'], variable: '--font-lemo
 const amiri = Amiri({ weight: ['400', '700'], subsets: ['arabic', 'latin'], variable: '--font-amiri', preload: false })
 const naskh = Noto_Naskh_Arabic({ subsets: ['arabic'], variable: '--font-naskh', preload: false })
 
-const description =
-  'Sewerage Water Tank (الشفط میاں مجاری), Mahbellah Saniya and Al Khoud, Muscat, Oman — 24/7 sewage suction, septic tank emptying and grease trap cleaning.'
-
+// Shared by both language pages; each page sets its own title, description, preview card and
+// language alternates (app/ui/seo.ts)
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: 'Sewerage Water Tank',
-  description,
-  alternates: { canonical: '/' },
-  // The preview card when the link is shared on WhatsApp, Facebook, X and the like
-  openGraph: {
-    type: 'website',
-    url: '/',
-    siteName: 'Sewerage Water Tank',
-    title: 'Sewerage Water Tank — الشفط میاں مجاری',
-    description,
-    locale: 'en_US',
-    alternateLocale: ['ar_OM'],
-    images: [{ url: '/images/tank.jpg', width: 1624, height: 969, alt: 'Our yellow suction tanker emptying a manhole' }],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Sewerage Water Tank — الشفط میاں مجاری',
-    description,
-    images: ['/images/tank.jpg'],
-  },
+  applicationName: 'Sewerage Water Tank',
+}
+
+export const viewport: Viewport = {
+  themeColor: '#0C0F14',
 }
 
 // Entrance motion only when the visitor allows it; if the page script never runs, fall back to a static page.
