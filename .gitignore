@@ -42,6 +42,3 @@ next-env.d.ts
 
 /app/generated/prisma
 
-# NOTE: the rules above are deliberately NOT anchored with a leading "/".
-# This repo holds two independent Next.js projects (public-site/ and cms/),
-# so node_modules, .next and friends must match at any depth.

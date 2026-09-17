@@ -1,8 +1,7 @@
 # Deploying to Vercel
 
-The site is static: `index.html` plus the `videos/` folder. There is no build
-step, no server to run and no environment variables. `server.js` is only for
-running the site on your own computer.
+The site is a Next.js app. Vercel builds it with `next build` on every push and
+serves the page as prerendered static HTML. There are no environment variables.
 
 Repository: https://github.com/developerammad870-cloud/watertank
 
@@ -14,17 +13,21 @@ Repository: https://github.com/developerammad870-cloud/watertank
    If it isn't listed, click **Adjust GitHub App Permissions** and give Vercel
    access to the repository.
 3. On the configure screen:
-   - **Framework Preset:** Other
+   - **Framework Preset:** Next.js
    - **Root Directory:** `./`
-   - **Build Command** and **Output Directory:** leave them empty (no override)
+   - **Build Command**, **Output Directory** and **Install Command:** leave the
+     overrides off
    - **Environment Variables:** none
 4. Click **Deploy**. You get an address like `watertank.vercel.app`.
+
+`vercel.json` sets the framework to Next.js, so a project that was first set up
+with a different preset still builds correctly.
 
 ## Updating the site
 
 Every push to the `main` branch redeploys automatically, usually within a
-minute. Pushes to any other branch get their own preview address, so a change
-can be checked before it goes live.
+minute or two. Pushes to any other branch get their own preview address, so a
+change can be checked before it goes live.
 
 ## Your own domain
 
@@ -33,9 +36,5 @@ Vercel shows you at your domain registrar.
 
 ## Good to know
 
-- `.vercelignore` keeps `server.js`, the package files and these docs out of the
-  deployment, so only the website is published.
 - Vercel's free **Hobby** plan is for non-commercial use only. For a business
   website, Vercel's terms require the **Pro** plan.
-- The video is 18 MB and every full view downloads it, which counts toward the
-  plan's bandwidth. Compressing it (see README) makes it cheaper and faster.
