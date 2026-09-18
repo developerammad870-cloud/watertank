@@ -1,9 +1,9 @@
 import SitePage from '../ui/site-page'
 import { pageMetadata } from '../ui/seo'
 
-// Arabic: /ar
-export const metadata = pageMetadata('ar')
+// English: /
+export const metadata = pageMetadata('en')
 
 export default function Page() {
-  return <SitePage lang="ar" />
+  return <SitePage lang="en" />
 }
