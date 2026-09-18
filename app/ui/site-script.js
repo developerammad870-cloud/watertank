@@ -214,6 +214,18 @@ export function initSite() {
           if (++tries <= 5) retry = setTimeout(play, 1000);
         });
       };
+      // The video should come on with sound when the visitor reaches it. If the browser hasn't accepted the visitor
+      // as "active" yet it answers by pausing instead, so put the sound back and keep playing rather than stop.
+      const tryUnmute = () => {
+        if (!wantSound || !video.muted || video.paused) return;
+        video.muted = false;
+        setTimeout(() => {
+          if (video.muted || !video.paused) return;   // sound accepted, or the visitor paused it themselves
+          video.muted = true;
+          reel.classList.add("needs-tap");            // make the Sound on button stand out instead
+          video.play().catch(() => {});
+        }, 200);
+      };
       const unlockEvents = ["click", "keydown", "touchend"];
       const stopUnlock = () => unlockEvents.forEach(t => document.removeEventListener(t, unlock, true));
       function unlock(e) {
@@ -227,7 +239,7 @@ export function initSite() {
       unlockEvents.forEach(t => document.addEventListener(t, unlock, true));
 
       const onMeta = () => reel.classList.toggle("landscape", video.videoWidth > video.videoHeight);
-      const onData = () => { reel.classList.add("ready"); sync(); play(); };
+      const onData = () => { reel.classList.add("ready"); sync(); play(); tryUnmute(); };
       video.addEventListener("loadedmetadata", onMeta);
       video.querySelector("source").addEventListener("error", () => reel.classList.add("landscape"));
       video.addEventListener("loadeddata", onData);
@@ -253,7 +265,7 @@ export function initSite() {
       // Play when the video comes on screen or the tab comes back; pause when either goes away, to save battery and data
       new IntersectionObserver(() => {
         if (!reel.classList.contains("ready")) return;
-        if (onScreen()) play(); else video.pause();
+        if (onScreen()) { play(); tryUnmute(); } else video.pause();
       }, { threshold: [0, 0.25, 0.5] }).observe(reel);
       document.addEventListener("visibilitychange", () => {
         if (!reel.classList.contains("ready")) return;
