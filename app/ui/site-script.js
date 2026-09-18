@@ -256,6 +256,15 @@ export function initSite() {
         tries = 0;
         if (video.paused) play(); else video.pause();
       });
+      // The layer over the video: one tap is all the browser needs before it will allow sound
+      document.getElementById("reelTap").addEventListener("click", () => {
+        stopUnlock();
+        wantSound = true;
+        video.muted = false;
+        userPaused = false;
+        tries = 0;
+        play();
+      });
       document.getElementById("reelSound").addEventListener("click", () => {
         stopUnlock();
         wantSound = video.muted;

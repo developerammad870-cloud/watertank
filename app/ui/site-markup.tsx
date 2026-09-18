@@ -805,6 +805,16 @@ export const siteMarkup = (
                     <path d="M192 251c-26 4-40 26-38 44 1 10-18 16-34 18" fill="none" stroke="#B7C3C3" strokeWidth="5.5" strokeDasharray="1 2" />
                   </svg>
                   {" "}
+                  <button type="button" className="reel-tap" id="reelTap">
+                    {" "}
+                    <span className="en">
+                      {"Tap for sound"}
+                    </span>
+                    <span className="ar">
+                      {"اضغط لتشغيل الصوت"}
+                    </span>
+                  </button>
+                  {" "}
                   <div className="reel-ctrl">
                     {" "}
                     <button type="button" id="reelPlay">
@@ -2567,6 +2577,19 @@ export const siteMarkup = (
               </span>
               <span className="ar">
                 {"جميع الحقوق محفوظة."}
+              </span>
+            </p>
+            {" "}
+            <p className="foot-by">
+              <span className="en">
+                {"Designed & developed by"}
+              </span>
+              <span className="ar">
+                {"تصميم وتطوير"}
+              </span>
+              {" "}
+              <span className="by-name ltr">
+                {"Developer.Ammad"}
               </span>
             </p>
             {" "}
