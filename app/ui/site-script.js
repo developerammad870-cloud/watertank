@@ -197,10 +197,13 @@ export function initSite() {
         const r = reel.getBoundingClientRect();
         return Math.min(r.bottom, innerHeight) - Math.max(r.top, 0) >= r.height * 0.25;
       };
-      // Called by everything that might let the video start; does nothing unless it should be playing right now
+      // Called by everything that might let the video start; does nothing unless it should be playing right now.
+      // Asking to play before the video has downloaded is deliberate: it makes the browser fetch it now and start
+      // as soon as it can, instead of leaving a half-downloaded video sitting still on a slow connection.
       const play = () => {
         clearTimeout(retry);
-        if (userPaused || document.hidden || !video.paused || video.readyState < 2 || !onScreen()) return;
+        if (userPaused || document.hidden || !video.paused || !onScreen()) return;
+        if (video.preload !== "auto") { video.preload = "auto"; video.load(); }
         video.muted = !wantSound;
         video.play().catch(e => {
           if (e && e.name === "NotAllowedError" && !video.muted) {
@@ -241,7 +244,10 @@ export function initSite() {
       const onMeta = () => reel.classList.toggle("landscape", video.videoWidth > video.videoHeight);
       const onData = () => { reel.classList.add("ready"); sync(); play(); tryUnmute(); };
       video.addEventListener("loadedmetadata", onMeta);
-      video.querySelector("source").addEventListener("error", () => reel.classList.add("landscape"));
+      // Only a video that really can't be played falls back to the drawing, which is a wide one
+      const onBroken = () => { if (video.error || video.networkState === HTMLMediaElement.NETWORK_NO_SOURCE) reel.classList.add("landscape"); };
+      video.querySelector("source").addEventListener("error", onBroken);
+      video.addEventListener("error", onBroken);
       video.addEventListener("loadeddata", onData);
       video.addEventListener("canplay", play);
       video.addEventListener("playing", () => { tries = 0; });
@@ -273,11 +279,9 @@ export function initSite() {
       });
       // Play when the video comes on screen or the tab comes back; pause when either goes away, to save battery and data
       new IntersectionObserver(() => {
-        if (!reel.classList.contains("ready")) return;
-        if (onScreen()) { play(); tryUnmute(); } else video.pause();
+        if (onScreen()) { tries = 0; play(); tryUnmute(); } else video.pause();
       }, { threshold: [0, 0.25, 0.5] }).observe(reel);
       document.addEventListener("visibilitychange", () => {
-        if (!reel.classList.contains("ready")) return;
         if (document.hidden) video.pause(); else play();
       });
       // The video downloads as soon as the page itself has loaded, so it doesn't slow the first view but is ready
@@ -286,7 +290,7 @@ export function initSite() {
       if (document.readyState === "complete") preload(); else window.addEventListener("load", preload, { once: true });
       if (video.readyState >= 1) onMeta();
       if (video.readyState >= 2) onData();
-      else if (video.networkState === HTMLMediaElement.NETWORK_NO_SOURCE) reel.classList.add("landscape");
+      else onBroken();   // a video the browser has already given up on
     }
 
     /* ===== Tanker features: hovering, focusing or tapping a feature lights its marker on the drawing ===== */
