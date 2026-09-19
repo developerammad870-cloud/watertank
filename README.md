@@ -4,14 +4,22 @@ One-page website for a sewage suction and septic tank emptying service in
 Mahbellah Saniya and Al Khoud, Muscat, Oman. English and Arabic, built with
 Next.js (App Router).
 
+English is served at `/` and Arabic at `/ar`, each as its own page in one
+language, so search engines index both.
+
 ```
-app/layout.tsx          fonts (self-hosted with next/font), page title and description
-app/page.tsx            the page markup, and the structured data for search engines
-app/globals.css         all styles
-app/ui/site-script.js   everything interactive, and the business details (CONFIG)
-app/ui/site-behavior.tsx  runs site-script.js once the page has loaded
-public/images/          hero photo (tank.jpg, and tank-ar.jpg mirrored for Arabic)
-public/videos/          the "At work" video and its poster frame
+app/(en)/page.tsx, app/(ar)/ar/page.tsx   the two pages; each has its own root layout for <html lang>
+app/ui/root-html.tsx      the <html> shared by both: fonts (self-hosted with next/font), motion setup
+app/ui/site-markup.tsx    the page markup, written once in both languages
+app/ui/localize.tsx       keeps one language of the markup for each page
+app/ui/seo.ts             each page's title, description, language links and preview card
+app/ui/structured-data.ts business details for search engines (JSON-LD)
+app/global-not-found.tsx  the 404 page
+app/globals.css           all styles
+app/ui/site-script.js     everything interactive, and the business details (CONFIG)
+app/sitemap.ts, app/robots.ts, app/site.ts (the site's address)
+public/images/            hero photo (tank.jpg, and tank-ar.jpg mirrored for Arabic)
+public/videos/            the "At work" video and its poster frame
 ```
 
 ## Running it
@@ -41,23 +49,25 @@ const CONFIG = {
 ```
 
 `CONFIG` updates the page once it loads, but the same numbers are also written
-directly into `app/page.tsx` so the links work before the script runs. When a
-number changes, search `app/page.tsx` for the old one and replace every copy,
-including the `telephone` field in `jsonLd` at the top of the file.
+directly into `app/ui/site-markup.tsx` so the links work before the script runs,
+and into `app/ui/structured-data.ts` and `app/ui/seo.ts` for search engines.
+When a number changes, search the `app` folder for the old one and replace every
+copy.
 
 ## The video
 
 The "At work" section plays `public/videos/tanker.mp4` on a loop, whole and
 uncropped. A portrait (phone) video sits beside the gallery pictures on desktop
 and fills the width on mobile; a landscape video spans the full width instead.
-It starts downloading as soon as the page opens, so it is ready to play by the
-time a visitor scrolls to it. Until it plays, its first frame
-(`public/videos/tanker-poster.jpg`) is shown in its place.
+It starts downloading once the page itself has loaded, so it doesn't slow the
+first view but is ready by the time a visitor scrolls to it. Until it plays, its
+first frame (`public/videos/tanker-poster.jpg`) is shown in its place.
 
 Sound is on by default, with one limit set by every browser: a page cannot play
-sound before the visitor has tapped, clicked or pressed a key on it. Until then
-the video plays muted, and the sound comes on with that first interaction.
-Visitors can press Mute at any time.
+sound before the visitor has tapped, clicked or pressed a key on it. A visitor
+who has done so hears the video as soon as it comes into view. Until then it
+plays muted with a "Tap for sound" button over it, and the sound comes on with
+the first tap anywhere. Visitors can press Mute at any time.
 
 ### Replacing the video
 

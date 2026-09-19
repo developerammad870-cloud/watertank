@@ -6,6 +6,8 @@ const nextConfig: NextConfig = {
   turbopack: { root: path.resolve(__dirname) },
   // Serve the hero photo as AVIF where supported (smallest), WebP otherwise
   images: { formats: ['image/avif', 'image/webp'] },
+  // English and Arabic each have their own root layout, so a wrong address needs app/global-not-found.tsx
+  experimental: { globalNotFound: true },
 }
 
 export default nextConfig

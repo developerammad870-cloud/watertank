@@ -1,4 +1,4 @@
-/* Site styles, moved from the original index.html. Fonts come from next/font (see app/layout.tsx). */
+/* Site styles, moved from the original index.html. Fonts come from next/font (see app/ui/root-html.tsx). */
 body{margin:0}
 
 /* Palette: fleet yellow (the trucks) on deep navy, with warm white — token names kept from the first palette */
