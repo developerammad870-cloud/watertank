@@ -449,14 +449,15 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stro
 .foot-by{flex-basis:100%;order:1;display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:4px 12px;
   margin-block-start:6px;padding-block-start:14px;border-top:1px solid rgba(247,243,235,.12);
   font-size:14px;color:#9AA0A8}
-/* "Designed & developed by" in an editorial italic, the name signed underneath it in gold script */
-.foot-by > .en{font-family:var(--font-editorial),Georgia,serif;font-style:italic;font-weight:600;font-size:16px;color:#C9CDD3}
-.foot-by > .ar{font-family:var(--font-amiri),serif;font-weight:700;font-size:18px;color:#C9CDD3}
-.foot-by .by-name{font-family:var(--font-signature),"Brush Script MT",cursive;font-size:36px;line-height:1.1;
-  padding:.05em .3em .1em;   /* room for the script's swashes, which the gold fill would otherwise cut off */
+/* "Designed & developed by" in the logo's spaced serif capitals, the name in an editorial gold italic */
+.foot-by > .en,.foot-by > .ar,.foot-by .by-name{
   background:linear-gradient(100deg,#D2AE55 0%,#F3DE95 30%,#C9A33A 55%,#F3DE95 78%,#D2AE55 100%) 0 0/200% 100%;
   -webkit-background-clip:text;background-clip:text;color:transparent;transition:background-position 1.2s var(--ease)}
-.foot-by:hover .by-name{background-position:100% 0}
+.foot-by > .en{font-family:var(--font-marcellus),Georgia,serif;font-size:13px;letter-spacing:.2em;text-transform:uppercase}
+.foot-by > .ar{font-family:var(--font-amiri),serif;font-weight:700;font-size:17px}
+.foot-by .by-name{font-family:var(--font-editorial),Georgia,serif;font-style:italic;font-weight:600;font-size:23px;line-height:1.3;
+  padding-inline:.05em .15em}   /* room for the italic's lean, which the gold fill would otherwise cut off */
+.foot-by:hover > .en,.foot-by:hover > .ar,.foot-by:hover .by-name{background-position:100% 0}
 @media (max-width: 640px){
   .mbar{background:var(--ink);border-top-color:rgba(247,243,235,.16)}
   .mbar a{color:#F7F3EB}

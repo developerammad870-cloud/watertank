@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from 'next'
 import Script from 'next/script'
 import {
   Amiri,
-  Great_Vibes,
   IBM_Plex_Mono,
   Lemonada,
   Marcellus,
@@ -22,8 +21,7 @@ const plexMono = IBM_Plex_Mono({ weight: '500', subsets: ['latin'], variable: '-
 const lemonada = Lemonada({ subsets: ['arabic', 'latin'], variable: '--font-lemonada' })
 const amiri = Amiri({ weight: ['400', '700'], subsets: ['arabic', 'latin'], variable: '--font-amiri', preload: false })
 const naskh = Noto_Naskh_Arabic({ subsets: ['arabic'], variable: '--font-naskh', preload: false })
-// Only the developer credit at the foot of the page uses these two, so they aren't preloaded
-const signature = Great_Vibes({ weight: '400', subsets: ['latin'], variable: '--font-signature', preload: false })
+// Only the developer credit at the foot of the page uses this, so it isn't preloaded
 const editorial = Playfair_Display({ weight: '600', style: 'italic', subsets: ['latin'], variable: '--font-editorial', preload: false })
 
 // Shared by both language roots; each page adds its own title, description, preview card and
@@ -47,7 +45,7 @@ if (window.matchMedia && matchMedia("(prefers-reduced-motion: no-preference)").m
 // The <html> element for one language. English and Arabic each have their own root layout so that
 // <html lang> matches the page's actual language; the page's own direction is set on #site.
 export default function RootHtml({ lang, children }: { lang: Lang; children: React.ReactNode }) {
-  const fonts = [publicSans, marcellus, plexMono, lemonada, amiri, naskh, signature, editorial].map(f => f.variable).join(' ')
+  const fonts = [publicSans, marcellus, plexMono, lemonada, amiri, naskh, editorial].map(f => f.variable).join(' ')
   return (
     // The motion script adds a class to <html> before hydration, and browser extensions
     // (Grammarly, ColorZilla, password managers) add attributes to <body> before React loads
