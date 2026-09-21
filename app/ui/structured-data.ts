@@ -58,7 +58,8 @@ export function structuredData(lang: Lang) {
       : 'Sewage suction, septic tank emptying, grease trap cleaning and manhole unblocking across Muscat, 24 hours a day, with 5,000–12,000 gallon suction tankers and disposal at licensed treatment plants.',
     url: pageUrl,
     image: [photo],
-    logo: `${SITE_URL}/icon.svg`,
+    // Google needs a raster logo of at least 112×112 for results and the knowledge panel; it doesn't index SVG logos
+    logo: { '@type': 'ImageObject', url: `${SITE_URL}/icon.png`, width: 512, height: 512 },
     telephone: PHONE,
     email: EMAIL,
     contactPoint: [
