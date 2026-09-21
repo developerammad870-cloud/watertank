@@ -1,21 +1,22 @@
 import type { Metadata } from 'next'
 import type { Lang } from './localize'
 
-// Titles and descriptions use the words people in Oman search with, in each language.
+// Titles lead with the business name, so a search for the name finds the site, then the words people in Oman
+// search with, in each language.
 const COPY = {
   en: {
-    title: 'Sewage Tanker & Septic Tank Cleaning in Muscat, Oman | 24/7',
+    title: 'Sewerage Water Tank | Sewage Tanker & Septic Tank Cleaning Muscat',
     description:
-      '24/7 sewage suction, septic tank emptying and grease trap cleaning across Muscat, Oman. 5,000–12,000 gallon tankers, licensed disposal. Call +968 7636 8205.',
+      'Sewerage Water Tank: 24/7 sewage suction, septic tank emptying and grease trap cleaning across Muscat, Oman. 5,000–12,000 gallon tankers. Call +968 7636 8205.',
     ogTitle: 'Sewerage Water Tank — 24/7 sewage suction in Muscat, Oman',
     alt: 'Yellow sewage suction tanker emptying a manhole in Muscat, Oman',
     locale: 'en_US',
     alternateLocale: 'ar_OM',
   },
   ar: {
-    title: 'شفط مجاري وتفريغ بيارات في مسقط، عُمان | 24 ساعة',
+    title: 'الشفط میاں مجاری | شفط مجاري وتفريغ بيارات في مسقط، عُمان',
     description:
-      'شفط مياه المجاري وتفريغ البيارات وتسليك المجاري وتنظيف مصائد الشحوم في جميع مناطق مسقط على مدار 24 ساعة. صهاريج 5,000–12,000 جالون. اتصل ‎+968 7636 8205',
+      'الشفط میاں مجاری: شفط مياه المجاري وتفريغ البيارات وتسليك المجاري وتنظيف مصائد الشحوم في جميع مناطق مسقط على مدار 24 ساعة. صهاريج 5,000–12,000 جالون. اتصل ‎+968 7636 8205',
     ogTitle: 'الشفط میاں مجاری — شفط مياه المجاري في مسقط على مدار 24 ساعة',
     alt: 'صهريج شفط المجاري الأصفر أثناء شفط غرفة تفتيش في مسقط، عُمان',
     locale: 'ar_OM',
