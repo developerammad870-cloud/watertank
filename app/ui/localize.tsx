@@ -74,6 +74,12 @@ export function localize(node: ReactNode, lang: Lang): ReactNode {
       if (typeof p[key] === 'string' && AR_LABELS[p[key]]) props[key] = AR_LABELS[p[key]]
     }
   }
+  // Links whose target has a page per language (the service cards)
+  if (p['data-href-en'] !== undefined) {
+    props.href = p[`data-href-${lang}`]
+    props['data-href-en'] = undefined
+    props['data-href-ar'] = undefined
+  }
   if (p['data-ph-en'] !== undefined) {
     props.placeholder = p[`data-ph-${lang}`]
     props['data-ph-en'] = undefined

@@ -1,5 +1,6 @@
 import { SITE_URL } from '../site'
 import type { Lang } from './localize'
+import { SERVICES as SERVICE_PAGES, servicePath } from './services'
 
 // Structured data (schema.org JSON-LD) describing the business for Google: what it does, where, when and how to reach it.
 // Every fact here is also visible on the page; Google ignores or penalises markup that isn't.
@@ -85,9 +86,13 @@ export function structuredData(lang: Lang) {
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: ar ? 'خدمات الشفط والصرف الصحي' : 'Sewage suction services',
-      itemListElement: SERVICES.map(s => ({
+      // Same order as the service pages (app/ui/services.ts)
+      itemListElement: SERVICES.map((s, i) => ({
         '@type': 'Offer',
-        itemOffered: { '@type': 'Service', name: s.name[lang], description: s.description[lang], areaServed: muscat, provider: { '@id': businessId } },
+        itemOffered: {
+          '@type': 'Service', name: s.name[lang], description: s.description[lang], areaServed: muscat, provider: { '@id': businessId },
+          url: `${SITE_URL}${servicePath(lang, SERVICE_PAGES[i].slug)}`,
+        },
       })),
     },
   }

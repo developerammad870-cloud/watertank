@@ -576,12 +576,14 @@ export const siteMarkup = (
                   </span>
                   {" "}
                   <h3>
-                    <span className="en">
+                    <a className="svc-link" href="/services/sewage-water-suction" data-href-en="/services/sewage-water-suction" data-href-ar="/ar/services/sewage-water-suction">
+                      <span className="en">
                       {"Sewage water suction"}
                     </span>
                     <span className="ar">
                       {"شفط مياه المجاري"}
                     </span>
+                    </a>
                   </h3>
                   {" "}
                   <p>
@@ -604,12 +606,14 @@ export const siteMarkup = (
                   </span>
                   {" "}
                   <h3>
-                    <span className="en">
+                    <a className="svc-link" href="/services/septic-tank-emptying" data-href-en="/services/septic-tank-emptying" data-href-ar="/ar/services/septic-tank-emptying">
+                      <span className="en">
                       {"Septic tank emptying"}
                     </span>
                     <span className="ar">
                       {"تفريغ البيارات"}
                     </span>
+                    </a>
                   </h3>
                   {" "}
                   <p>
@@ -632,12 +636,14 @@ export const siteMarkup = (
                   </span>
                   {" "}
                   <h3>
-                    <span className="en">
+                    <a className="svc-link" href="/services/grease-trap-cleaning" data-href-en="/services/grease-trap-cleaning" data-href-ar="/ar/services/grease-trap-cleaning">
+                      <span className="en">
                       {"Grease trap cleaning"}
                     </span>
                     <span className="ar">
                       {"تنظيف مصائد الشحوم"}
                     </span>
+                    </a>
                   </h3>
                   {" "}
                   <p>
@@ -660,12 +666,14 @@ export const siteMarkup = (
                   </span>
                   {" "}
                   <h3>
-                    <span className="en">
+                    <a className="svc-link" href="/services/drain-unblocking" data-href-en="/services/drain-unblocking" data-href-ar="/ar/services/drain-unblocking">
+                      <span className="en">
                       {"Manhole & drain unblocking"}
                     </span>
                     <span className="ar">
                       {"فتح غرف التفتيش والمجاري"}
                     </span>
+                    </a>
                   </h3>
                   {" "}
                   <p>
@@ -688,12 +696,14 @@ export const siteMarkup = (
                   </span>
                   {" "}
                   <h3>
-                    <span className="en">
+                    <a className="svc-link" href="/services/sump-pit-cleaning" data-href-en="/services/sump-pit-cleaning" data-href-ar="/ar/services/sump-pit-cleaning">
+                      <span className="en">
                       {"Sump pit & pump station cleaning"}
                     </span>
                     <span className="ar">
                       {"تنظيف غرف الضخ ومحطات الرفع"}
                     </span>
+                    </a>
                   </h3>
                   {" "}
                   <p>
@@ -716,12 +726,14 @@ export const siteMarkup = (
                   </span>
                   {" "}
                   <h3>
-                    <span className="en">
+                    <a className="svc-link" href="/services/emergency-overflow" data-href-en="/services/emergency-overflow" data-href-ar="/ar/services/emergency-overflow">
+                      <span className="en">
                       {"Emergency overflow response"}
                     </span>
                     <span className="ar">
                       {"طوارئ فيضان الخزانات"}
                     </span>
+                    </a>
                   </h3>
                   {" "}
                   <p>

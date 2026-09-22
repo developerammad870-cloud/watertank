@@ -512,3 +512,53 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stro
 
 /* The language switch is a link, so keep its button weight inside the top strip */
 .strip a.lang-btn{font-weight:400}
+
+/* Home: each service card links to its own page; the link covers the whole card */
+.svc-link{color:inherit;text-decoration:none}
+.svc-link::after{content:"";position:absolute;inset:0}
+.svc-link:focus-visible{outline:none}
+.svc:has(.svc-link:focus-visible){outline:2px solid var(--brass-hi);outline-offset:-2px}
+
+/* Service pages (app/ui/service-page.tsx) */
+.svc-hero{background:radial-gradient(ellipse at 72% 38%, var(--surface), var(--petrol) 72%);padding-block:26px 34px;border-bottom:1px solid var(--rule)}
+.crumbs ol{list-style:none;margin:0 0 26px;padding:0;display:flex;flex-wrap:wrap;gap:6px;font-size:14px;color:var(--ink-2)}
+.crumbs li + li::before{content:"/";margin-inline-end:6px;color:var(--brass-hi)}
+.crumbs a{color:var(--ink-2);text-decoration:none}
+.crumbs a:hover{color:var(--brass)}
+.svc-hero-grid{display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center}
+.svc-hero h1{font-family:var(--f-display);font-size:clamp(32px,4.6vw,54px);line-height:1.12;margin-block:12px 16px;color:var(--ink);text-wrap:balance}
+.site[data-lang="ar"] .svc-hero h1{font-weight:700;line-height:1.4}
+.svc-hero-ico{width:clamp(130px,15vw,180px);aspect-ratio:1;display:grid;place-items:center;border-radius:50%;background:var(--ink);color:var(--brass-hi);box-shadow:var(--shadow);outline:1px solid var(--brass-hi);outline-offset:6px}
+.svc-hero-ico .i{width:46%;height:46%;stroke-width:1.3}
+.svc-hero .hero-cta .btn .ltr{font-weight:500;opacity:.8}
+.svc-facts{list-style:none;margin:30px 0 0;padding:18px 0 0;border-top:1px solid var(--rule);display:flex;flex-wrap:wrap;gap:10px 28px;font-size:15px;color:var(--ink-2)}
+.svc-facts li{display:flex;align-items:center;gap:8px}
+.svc-facts .i{width:18px;height:18px;color:var(--brass)}
+.svc-page .why li p{color:var(--ink);font-size:17px}
+.svc-note{color:var(--ink-2);margin-block-end:18px}
+.svc-tankers{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.svc-tankers li{display:grid;grid-template-columns:auto auto 1fr;align-items:baseline;gap:4px 8px;padding-block:14px;border-bottom:1px solid var(--rule)}
+.svc-tankers b{font-family:var(--f-display);font-weight:400;font-size:26px;color:var(--brass)}
+.svc-tankers small{color:var(--ink-2);font-size:14px}
+.svc-tankers span{padding-inline-start:12px}
+.svc-other{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.svc-other a{display:flex;align-items:center;gap:12px;padding:14px 16px;border:1px solid var(--rule);background:var(--ground);color:var(--ink);text-decoration:none;font-weight:600;transition:border-color .2s,color .2s,transform .3s var(--ease)}
+.svc-other a:hover{border-color:var(--brass);color:var(--brass);transform:translateX(4px)}
+[dir="rtl"] .svc-other a:hover{transform:translateX(-4px)}
+.svc-other .i{color:var(--brass);flex:none}
+.svc-cta{background:var(--ink);color:#B7BCC4;padding-block:72px;text-align:center}
+.svc-cta h2{font-family:var(--f-display);font-size:clamp(28px,4vw,40px);line-height:1.2;color:#F7F3EB;margin-block-end:10px}
+.site[data-lang="ar"] .svc-cta h2{font-weight:700;line-height:1.5}
+.svc-cta p{max-width:56ch;margin-inline:auto}
+.svc-cta .hero-cta{justify-content:center}
+.svc-cta .btn-ghost{border-color:rgba(247,243,235,.3);color:#F7F3EB}
+.svc-cta .btn-ghost:hover{border-color:var(--brass-hi);color:var(--brass-hi)}
+@media (max-width: 980px){
+  .svc-hero-grid{grid-template-columns:1fr}
+  .svc-hero-ico{display:none}
+}
+@media (max-width: 640px){
+  .svc-tankers li{grid-template-columns:auto 1fr}
+  .svc-tankers span{grid-column:1/-1;padding-inline-start:0}
+  .svc-hero .hero-cta .btn{flex:1 1 100%;justify-content:center}
+}
